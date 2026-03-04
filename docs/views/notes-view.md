@@ -1,6 +1,6 @@
 # Notes View (Legacy)
 
-This page documents the legacy Notes View from earlier TaskNotes versions.
+This page documents the legacy Notes View from earlier SuperFlow versions.
 
 ## Current Status
 

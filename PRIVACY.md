@@ -1,14 +1,14 @@
-# TaskNotes Privacy Policy
+# SuperFlow Privacy Policy
 
 Last updated: February 21, 2026
 
 ## Overview
 
-TaskNotes is an Obsidian plugin. It stores task data in your local vault files.
+SuperFlow is an Obsidian plugin. It stores task data in your local vault files.
 
 ## Data Collection and Usage
 
-TaskNotes does not include telemetry or analytics collection.
+SuperFlow does not include telemetry or analytics collection.
 
 ## Local Storage
 
@@ -17,7 +17,7 @@ Plugin settings are stored in Obsidian's local plugin configuration.
 
 ## Optional Network Features
 
-TaskNotes is local-first. Network requests occur only when you enable features that require them.
+SuperFlow is local-first. Network requests occur only when you enable features that require them.
 
 Optional network features:
 
@@ -28,9 +28,9 @@ Optional network features:
 
 ## OAuth Credentials and Tokens
 
-- OAuth client credentials are configured by you in TaskNotes settings.
+- OAuth client credentials are configured by you in SuperFlow settings.
 - Access and refresh tokens are stored locally on your device.
-- You can disconnect providers at any time to revoke TaskNotes access.
+- You can disconnect providers at any time to revoke SuperFlow access.
 
 ## Third-Party Services (When Enabled)
 
@@ -38,15 +38,15 @@ Optional network features:
 - Microsoft APIs: https://privacy.microsoft.com/privacystatement
 - Any ICS host or webhook endpoint you configure
 
-## What TaskNotes Does Not Do
+## What SuperFlow Does Not Do
 
-- No TaskNotes-hosted cloud sync service
-- No remote storage of your vault content by TaskNotes
+- No SuperFlow-hosted cloud sync service
+- No remote storage of your vault content by SuperFlow
 - No telemetry pipeline sending usage metrics
 
 ## Data Deletion
 
-You can stop TaskNotes processing by disabling the plugin.
+You can stop SuperFlow processing by disabling the plugin.
 You can remove plugin settings by uninstalling the plugin.
 Your notes remain in your vault.
 
@@ -58,10 +58,10 @@ This policy may be updated. Changes are published in this file with a new date.
 
 For privacy questions, open an issue:
 
-https://github.com/callumalpass/tasknotes/issues
+https://github.com/callumalpass/superflow/issues
 
 ## Open Source Verification
 
-TaskNotes is open source. You can inspect the implementation:
+SuperFlow is open source. You can inspect the implementation:
 
-https://github.com/callumalpass/tasknotes
+https://github.com/callumalpass/superflow

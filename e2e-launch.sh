@@ -5,7 +5,7 @@ set -eu -o pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 UNPACKED_DIR="$SCRIPT_DIR/.obsidian-unpacked"
-E2E_VAULT_DIR="$SCRIPT_DIR/tasknotes-e2e-vault"
+E2E_VAULT_DIR="$SCRIPT_DIR/superflow-e2e-vault"
 
 if [[ ! -x "$UNPACKED_DIR/obsidian" ]]; then
     echo "Error: Unpacked Obsidian not found. Run e2e-setup.sh first."

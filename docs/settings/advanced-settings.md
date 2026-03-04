@@ -1,10 +1,10 @@
 # Advanced Settings
 
-This page documents advanced configuration patterns that are spread across multiple TaskNotes settings tabs.
+This page documents advanced configuration patterns that are spread across multiple SuperFlow settings tabs.
 
 ## Where Advanced Configuration Lives
 
-TaskNotes v4 uses a 6-tab settings layout:
+SuperFlow v4 uses a 6-tab settings layout:
 
 - `General`
 - `Task Properties`
@@ -17,11 +17,11 @@ There is no separate `Advanced` tab in the current UI.
 
 ## Field Mapping
 
-Field mapping controls which frontmatter keys TaskNotes reads and writes for core properties.
+Field mapping controls which frontmatter keys SuperFlow reads and writes for core properties.
 
 Location:
 
-- `Settings -> TaskNotes -> Task Properties`
+- `Settings -> SuperFlow -> Task Properties`
 
 Use field mapping when:
 
@@ -34,7 +34,7 @@ User fields add custom properties that become available in filters, grouping, so
 
 Location:
 
-- `Settings -> TaskNotes -> Task Properties`
+- `Settings -> SuperFlow -> Task Properties`
 
 Typical fields:
 
@@ -50,7 +50,7 @@ Custom statuses and priorities are configured in Task Properties.
 
 Location:
 
-- `Settings -> TaskNotes -> Task Properties`
+- `Settings -> SuperFlow -> Task Properties`
 
 Notes:
 
@@ -63,7 +63,7 @@ The create/edit modal can be reconfigured to show only relevant fields.
 
 Location:
 
-- `Settings -> TaskNotes -> Modal Fields`
+- `Settings -> SuperFlow -> Modal Fields`
 
 This is useful when your team standardizes a minimal required schema.
 
@@ -73,7 +73,7 @@ Time tracking auto-stop and pomodoro behavior are configured in Features.
 
 Location:
 
-- `Settings -> TaskNotes -> Features`
+- `Settings -> SuperFlow -> Features`
 
 ## ICS-Specific Field Mapping
 
@@ -81,6 +81,6 @@ ICS-related identifiers (`icsEventId`, ICS tag field) are part of field mapping.
 
 Location:
 
-- `Settings -> TaskNotes -> Task Properties`
+- `Settings -> SuperFlow -> Task Properties`
 
 These fields are used to maintain links between imported calendar events and created notes/tasks.

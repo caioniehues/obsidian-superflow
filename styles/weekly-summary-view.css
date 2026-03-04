@@ -1,0 +1,51 @@
+/* Weekly Summary View */
+.weekly-summary-view {
+	padding: var(--size-4-3, 24px);
+}
+
+.weekly-summary-day-breakdown {
+	margin-bottom: var(--size-4-4, 32px);
+}
+
+.weekly-summary-day-breakdown table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--font-ui-small);
+}
+
+.weekly-summary-day-breakdown th {
+	text-align: left;
+	padding: var(--size-2-1, 4px) var(--size-2-2, 8px);
+	color: var(--text-muted);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.weekly-summary-day-breakdown td {
+	padding: var(--size-2-1, 4px) var(--size-2-2, 8px);
+	border-bottom: 1px solid var(--background-modifier-border-focus);
+}
+
+.weekly-summary-estimate-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--font-ui-small);
+}
+
+.weekly-summary-estimate-table th {
+	text-align: left;
+	padding: var(--size-2-1, 4px) var(--size-2-2, 8px);
+	color: var(--text-muted);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.weekly-summary-estimate-table td {
+	padding: var(--size-2-1, 4px) var(--size-2-2, 8px);
+	border-bottom: 1px solid var(--background-modifier-border-focus);
+}
+
+.weekly-summary-empty {
+	color: var(--text-muted);
+	font-style: italic;
+	text-align: center;
+	padding: var(--size-4-6, 48px) 0;
+}

@@ -1,10 +1,10 @@
-# TaskNotes Webhooks
+# SuperFlow Webhooks
 
-TaskNotes webhooks send HTTP POST requests when selected events occur.
+SuperFlow webhooks send HTTP POST requests when selected events occur.
 
 ## Prerequisites
 
-1. Enable HTTP API in `Settings -> TaskNotes -> Integrations -> HTTP API`.
+1. Enable HTTP API in `Settings -> SuperFlow -> Integrations -> HTTP API`.
 2. Create at least one webhook (settings UI or API).
 3. Subscribe it to one or more events.
 
@@ -82,9 +82,9 @@ Example:
 curl -X POST http://localhost:8080/api/webhooks \
   -H "Content-Type: application/json" \
   -d '{
-    "url": "https://example.com/tasknotes",
+    "url": "https://example.com/superflow",
     "events": ["task.completed", "task.created"],
-    "transformFile": "TaskNotes/webhooks/slack.json"
+    "transformFile": "SuperFlow/webhooks/slack.json"
   }'
 ```
 
@@ -121,9 +121,9 @@ Because retries and duplicates are possible, handlers should be idempotent.
 
 When `corsHeaders` is enabled (default), delivery includes:
 
-- `X-TaskNotes-Event`
-- `X-TaskNotes-Signature`
-- `X-TaskNotes-Delivery-ID`
+- `X-SuperFlow-Event`
+- `X-SuperFlow-Signature`
+- `X-SuperFlow-Delivery-ID`
 
 Signature is HMAC-SHA256 over `JSON.stringify(payload)` using webhook `secret`.
 
@@ -150,7 +150,7 @@ Supported file types:
 - `.js`: JavaScript transform function
 - `.json`: event template map with variable interpolation
 
-If transform execution fails, TaskNotes falls back to original payload.
+If transform execution fails, SuperFlow falls back to original payload.
 
 ### JavaScript Transform Files
 
@@ -201,7 +201,7 @@ Structure:
     "vault": "${vault.name}"
   },
   "default": {
-    "text": "TaskNotes event: ${event}"
+    "text": "SuperFlow event: ${event}"
   }
 }
 ```
@@ -214,11 +214,11 @@ Rules:
 
 ## CORS and Headers
 
-Webhook delivery requests are outbound server-side requests from TaskNotes.
+Webhook delivery requests are outbound server-side requests from SuperFlow.
 
 `corsHeaders` behavior:
 
-- `true` (default): sends TaskNotes custom headers including signature.
+- `true` (default): sends SuperFlow custom headers including signature.
 - `false`: only sends `Content-Type: application/json`.
 
 Disable custom headers for endpoints that reject non-standard headers.
@@ -242,7 +242,7 @@ node test-webhook.js 8080
 Default server values:
 
 - URL: `http://localhost:3000/webhook`
-- Test secret: `test-secret-key-for-tasknotes-webhooks`
+- Test secret: `test-secret-key-for-superflow-webhooks`
 
 ### External Inspection
 
@@ -267,7 +267,7 @@ For quick inspection, use a request-bin tool such as `webhook.site`.
 If failures continue and `failureCount` exceeds 10, webhook is disabled.
 
 1. Fix endpoint availability or response handling.
-2. Re-enable webhook in TaskNotes settings, or recreate it via `POST /api/webhooks`.
+2. Re-enable webhook in SuperFlow settings, or recreate it via `POST /api/webhooks`.
 
 ### Transform errors
 

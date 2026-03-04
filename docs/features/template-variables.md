@@ -1,6 +1,6 @@
 # Template Variables Reference
 
-TaskNotes supports template variables for dynamic content generation in body templates, folder paths, and filenames. Variables use the `{{variableName}}` syntax and are replaced with actual values when content is created.
+SuperFlow supports template variables for dynamic content generation in body templates, folder paths, and filenames. Variables use the `{{variableName}}` syntax and are replaced with actual values when content is created.
 
 ## Overview
 

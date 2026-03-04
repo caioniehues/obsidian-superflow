@@ -1,6 +1,6 @@
 # Settings
 
-TaskNotes settings are organized into tabs. Each tab controls a different part of plugin behavior.
+SuperFlow settings are organized into tabs. Each tab controls a different part of plugin behavior.
 
 
 ## General
@@ -11,7 +11,7 @@ For more information, see the [General Settings](settings/general.md) documentat
 
 ## Task Properties
 
-Task Properties defines the schema TaskNotes writes to frontmatter, including status, priority, dates, reminders, projects, and user fields. Each property card lets you remap key names and behavior so TaskNotes can match existing metadata rather than forcing a migration.
+Task Properties defines the schema SuperFlow writes to frontmatter, including status, priority, dates, reminders, projects, and user fields. Each property card lets you remap key names and behavior so SuperFlow can match existing metadata rather than forcing a migration.
 
 For more detailed information, see the [Task Properties Settings](settings/task-properties.md) documentation.
 

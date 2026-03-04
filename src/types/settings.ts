@@ -122,6 +122,12 @@ export interface TaskNotesSettings {
 	pomodoroSoundVolume: number; // 0-100
 	pomodoroStorageLocation: "plugin" | "daily-notes"; // where to store pomodoro history data
 	pomodoroMobileSidebar: "tab" | "left" | "right"; // where to open pomodoro view on mobile
+	// Focus engine settings
+	defaultFocusMode: "pomodoro" | "flowtime" | "countdown";
+	enforceBreaks: "none" | "soft" | "strict"; // break enforcement level
+	autoStartFocusOnTracking: boolean; // auto-start focus session when time tracking starts
+	// SuperFlow state file path for tray app integration
+	superflowStateFilePath?: string;
 	// Editor settings
 	enableTaskLinkOverlay: boolean;
 	disableOverlayOnAlias: boolean;
@@ -160,9 +166,13 @@ export interface TaskNotesSettings {
 	showReleaseNotesOnUpdate?: boolean;
 	// Status bar settings
 	showTrackedTasksInStatusBar: boolean;
+	showTotalTimeToday: boolean;
 	// Time tracking settings
 	autoStopTimeTrackingOnComplete: boolean;
 	autoStopTimeTrackingNotification: boolean;
+	trackingReminderMinutes: number; // Minutes of idle time before reminding to track (0 = disabled)
+	// Planning settings
+	dailyPlanningOnOpen: boolean; // Auto-open planning modal on first vault open of the day
 	// Relationships widget settings (unified subtasks, projects, and dependencies)
 	showRelationships: boolean;
 	relationshipsPosition: "top" | "bottom";

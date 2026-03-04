@@ -1,11 +1,11 @@
 # Calendar Integration
 
 
-TaskNotes provides calendar integration through OAuth-connected calendar services, two Bases-powered calendar views, and read-only ICS calendar subscriptions.
+SuperFlow provides calendar integration through OAuth-connected calendar services, two Bases-powered calendar views, and read-only ICS calendar subscriptions.
 
 ## OAuth Calendar Integration
 
-TaskNotes supports bidirectional synchronization with Google Calendar and Microsoft Outlook using OAuth authentication. This integration allows you to view external calendar events alongside your tasks and sync changes back to the calendar provider.
+SuperFlow supports bidirectional synchronization with Google Calendar and Microsoft Outlook using OAuth authentication. This integration allows you to view external calendar events alongside your tasks and sync changes back to the calendar provider.
 
 ### Supported Providers
 
@@ -19,7 +19,7 @@ OAuth calendar integration requires creating an OAuth application with your cale
 1. Create an OAuth application in Google Cloud Console or Microsoft Azure Portal
 2. Configure redirect URIs and scopes
 3. Obtain client ID and client secret
-4. Enter credentials in TaskNotes settings (`Settings -> TaskNotes -> Integrations`, OAuth calendar section)
+4. Enter credentials in SuperFlow settings (`Settings -> SuperFlow -> Integrations`, OAuth calendar section)
 
 ### Synchronization Behavior
 
@@ -31,17 +31,17 @@ OAuth calendar integration requires creating an OAuth application with your cale
 
 ### Token Management
 
-TaskNotes stores OAuth access tokens and refresh tokens locally. Tokens are refreshed automatically before expiration. You can revoke access at any time through the integrations settings.
+SuperFlow stores OAuth access tokens and refresh tokens locally. Tokens are refreshed automatically before expiration. You can revoke access at any time through the integrations settings.
 
 ## Calendar Views
 
-TaskNotes provides Calendar and Mini Calendar views that display tasks alongside OAuth calendar events and ICS subscriptions. Both views support drag-and-drop scheduling.
+SuperFlow provides Calendar and Mini Calendar views that display tasks alongside OAuth calendar events and ICS subscriptions. Both views support drag-and-drop scheduling.
 
 For detailed view documentation, see [Calendar Views](../views/calendar-views.md).
 
 ## Time Entry Editor
 
-TaskNotes includes a time entry editor for tracking time spent on tasks. Time entries are created and managed through the Calendar View.
+SuperFlow includes a time entry editor for tracking time spent on tasks. Time entries are created and managed through the Calendar View.
 
 ### Creating Time Entries
 
@@ -67,9 +67,9 @@ Access the time entry editor by clicking an existing time entry in the calendar.
 
 ## ICS Calendar Subscriptions
 
-TaskNotes can subscribe to external calendar feeds using the iCalendar (ICS) format. This provides read-only access to events from calendar services. ICS subscriptions differ from OAuth calendar integration in that they are read-only—dragging ICS events to new dates does not update the source calendar.
+SuperFlow can subscribe to external calendar feeds using the iCalendar (ICS) format. This provides read-only access to events from calendar services. ICS subscriptions differ from OAuth calendar integration in that they are read-only—dragging ICS events to new dates does not update the source calendar.
 
-Add and manage ICS subscriptions from `Settings -> TaskNotes -> Integrations` (Calendar Subscriptions section).
+Add and manage ICS subscriptions from `Settings -> SuperFlow -> Integrations` (Calendar Subscriptions section).
 
 For details on creating notes and tasks from calendar events, see [ICS Integration](ics-integration.md).
 
@@ -83,4 +83,4 @@ The Calendar View supports time blocking for scheduling dedicated work periods. 
 
 Time blocks are stored in the frontmatter of daily notes and can be linked to specific tasks. This differs from time entries, which track actual time spent and are stored in task frontmatter rather than daily notes.
 
-Enable time blocking under `Settings -> TaskNotes -> Features` (Timeblocking section).
+Enable time blocking under `Settings -> SuperFlow -> Features` (Timeblocking section).

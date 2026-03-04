@@ -1,7 +1,7 @@
 {
-	"name": "tasknotes",
+	"name": "obsidian-superflow",
 	"version": "4.4.0",
-	"description": "Note-based task management with calendar, pomodoro and time-tracking integration.",
+	"description": "Integrated task management, focus timer, and planning workflows for Obsidian.",
 	"main": "main.js",
 	"scripts": {
 		"build": "npm run build-css && node generate-release-notes-import.mjs && tsc -noEmit --skipLibCheck && node esbuild.config.mjs production",

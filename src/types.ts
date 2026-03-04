@@ -7,6 +7,8 @@ export const POMODORO_STATS_VIEW_TYPE = "tasknotes-pomodoro-stats-view";
 export const STATS_VIEW_TYPE = "tasknotes-stats-view";
 export const KANBAN_VIEW_TYPE = "tasknotes-kanban-view";
 export const SUBTASK_WIDGET_VIEW_TYPE = "tasknotes-subtask-widget-view";
+export const DAILY_SUMMARY_VIEW_TYPE = "tasknotes-daily-summary-view";
+export const WEEKLY_SUMMARY_VIEW_TYPE = "tasknotes-weekly-summary-view";
 
 // Bases view IDs (for Bases plugin integration)
 export const BASES_CALENDAR_VIEW_ID = "tasknotesCalendar";
@@ -617,6 +619,66 @@ export interface PomodoroHistoryStats {
 	totalMinutes: number;
 	averageSessionLength: number;
 	completionRate: number; // percentage of sessions completed vs interrupted
+}
+
+// Focus Mode types (SuperFlow Phase 2)
+export type FocusMode = 'pomodoro' | 'flowtime' | 'countdown';
+
+export interface FocusSession extends PomodoroSession {
+	mode: FocusMode;
+}
+
+export interface FocusState extends PomodoroState {
+	mode: FocusMode;
+}
+
+export interface FlowtimeBreakSuggestion {
+	suggestedBreakMinutes: number;
+	workDurationMinutes: number;
+}
+
+// Planning Mode types (SuperFlow Phase 3)
+export type PlanningStep = 'review-yesterday' | 'plan-today' | 'estimate' | 'done';
+
+export interface PlanningState {
+	isActive: boolean;
+	currentStep: PlanningStep;
+}
+
+export interface YesterdayReview {
+	completed: TaskInfo[];
+	incomplete: TaskInfo[];
+}
+
+// SuperFlow state (written to disk for external tools)
+export interface SuperFlowState {
+	version: 1;
+	timestamp: string; // ISO datetime
+	currentTask: {
+		path: string;
+		title: string;
+		timeEstimate: number | null; // ms
+		totalTrackedTime: number; // ms
+		status: string;
+		project?: string;
+	} | null;
+	timer: {
+		mode: string; // 'pomodoro' | 'flowtime' | 'countdown' | 'none'
+		isRunning: boolean;
+		progress: number; // 0-1, clamped
+		timeRemaining: number; // seconds
+		sessionType: string; // 'work' | 'short-break' | 'long-break'
+	};
+	todayTasks: Array<{
+		path: string;
+		title: string;
+		status: string;
+		timeEstimate: number | null; // ms
+		totalTrackedTime: number; // ms
+	}>;
+	settings: {
+		stateFilePath: string;
+	};
 }
 
 // Field mapping and customization types

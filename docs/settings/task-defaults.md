@@ -7,7 +7,7 @@ This page documents folder management, filename templates, archive settings, and
 
 ## Folder and File Management
 
-You can specify a **Default Tasks Folder** where new tasks will be created. You can also configure the **Task Tag** that identifies notes as TaskNotes, and you can specify a list of **Excluded Folders** that will be ignored by the plugin.
+You can specify a **Default Tasks Folder** where new tasks will be created. You can also configure the **Task Tag** that identifies notes as SuperFlow, and you can specify a list of **Excluded Folders** that will be ignored by the plugin.
 
 Filename generation settings are configured in the **Task Properties** tab within the Title property card. You can choose from title-based, timestamp-based, Zettelkasten-style patterns, or create a custom filename template.
 These settings define folder paths and filename behavior for new tasks, which affects long-term vault structure.
@@ -118,12 +118,12 @@ Archive/{{year}}/{{month}}/{{project}}
 
 ## Archive Folder Management
 
-TaskNotes can automatically move tasks to a designated archive folder when archived, and back to the default tasks folder when unarchived.
+SuperFlow can automatically move tasks to a designated archive folder when archived, and back to the default tasks folder when unarchived.
 Archive moves separate active and historical tasks at the filesystem level.
 
 **Move archived tasks to folder** - Controls whether tasks are automatically moved when archived. Disabled by default.
 
-**Archive folder** - Specifies the destination folder for archived tasks (default: `TaskNotes/Archive`). Only appears when the move setting is enabled. Supports the same template variables as the default tasks folder.
+**Archive folder** - Specifies the destination folder for archived tasks (default: `SuperFlow/Archive`). Only appears when the move setting is enabled. Supports the same template variables as the default tasks folder.
 
 The system prevents file overwrites by checking for existing files and showing error messages if conflicts are detected. Archive operations continue even if file moves fail.
 
@@ -258,7 +258,7 @@ Storing title in filename favors path-readable tasks and external tooling that k
 
 ## Default Reminders
 
-Configure default reminders in `Settings -> TaskNotes -> Task Properties` (Reminders card). These reminders automatically apply to new tasks.
+Configure default reminders in `Settings -> SuperFlow -> Task Properties` (Reminders card). These reminders automatically apply to new tasks.
 Default reminders apply to all new tasks and can be supplemented with per-task reminders.
 
 ### Reminder Types
@@ -272,7 +272,7 @@ Default reminders apply to all new tasks and can be supplemented with per-task r
 
 ### Configuration
 
-1. Navigate to `Settings -> TaskNotes -> Task Properties`
+1. Navigate to `Settings -> SuperFlow -> Task Properties`
 2. Expand the Reminders card
 3. In the Default Reminders section, select type (Relative or Absolute)
 4. Configure timing and optional description
@@ -284,7 +284,7 @@ For detailed reminder documentation, see [Task Reminders](../features/task-manag
 
 ## Template System
 
-TaskNotes supports **Templates** for both the YAML frontmatter and the body of your task notes. You can use templates to pre-fill common values, add boilerplate text, and create a consistent structure for your tasks. Templates can also include variables, such as `{{title}}`, `{{date}}`, and `{{parentNote}}`, which will be automatically replaced with the appropriate values when a new task is created.
+SuperFlow supports **Templates** for both the YAML frontmatter and the body of your task notes. You can use templates to pre-fill common values, add boilerplate text, and create a consistent structure for your tasks. Templates can also include variables, such as `{{title}}`, `{{date}}`, and `{{parentNote}}`, which will be automatically replaced with the appropriate values when a new task is created.
 
 ### Unified Template Variables
 

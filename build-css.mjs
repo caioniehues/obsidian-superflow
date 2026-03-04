@@ -38,7 +38,12 @@ const CSS_FILES = [
     'styles/settings-view.css',      // SettingsView component with proper BEM scoping
     'styles/webhook-settings.css',   // Webhook settings UI with proper BEM scoping
     'styles/status-bar.css',         // StatusBar component with proper BEM scoping
-    'styles/bases-views.css'         // Bases integration views (list and kanban)
+    'styles/bases-views.css',        // Bases integration views (list and kanban)
+    'styles/focus-mode-selector.css',    // FocusModeSelector component
+    'styles/planning-modal.css',         // PlanningModal component
+    'styles/break-enforcement-modal.css', // BreakEnforcementModal component
+    'styles/daily-summary-view.css',     // DailySummaryView component
+    'styles/weekly-summary-view.css',    // WeeklySummaryView component
 ];
 
 const MAIN_CSS_TEMPLATE = `/* TaskNotes Plugin Styles */

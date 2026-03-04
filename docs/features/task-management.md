@@ -13,7 +13,7 @@ You can create and edit tasks in a variety of ways. The primary method is throug
 
 When creating a task, the title will be automatically sanitized to remove any characters that are forbidden in filenames.
 
-TaskNotes also supports **Natural Language Creation**, which allows you to create tasks by typing descriptions in plain English. The built-in parser can extract structured data from phrases like "Buy groceries tomorrow at 3pm @home #errands high priority."
+SuperFlow also supports **Natural Language Creation**, which allows you to create tasks by typing descriptions in plain English. The built-in parser can extract structured data from phrases like "Buy groceries tomorrow at 3pm @home #errands high priority."
 
 In most workflows, users combine both approaches: fast capture with natural language, then occasional structured edits in the modal when more precision is needed.
 
@@ -88,7 +88,7 @@ When typing the status trigger character (default `*`) in the natural language i
 
 Status suggestions allow quick selection of statuses when creating tasks. For example, typing `*in` shows "In Progress" as a suggestion if that's one of your configured statuses.
 
-Additionally, you can convert any line type in your notes to TaskNotes using the **Instant Conversion** feature. This works with checkboxes, bullet points, numbered lists, blockquotes, headers, and plain text lines.
+Additionally, you can convert any line type in your notes to SuperFlow using the **Instant Conversion** feature. This works with checkboxes, bullet points, numbered lists, blockquotes, headers, and plain text lines.
 
 ## Task Properties
 
@@ -100,7 +100,7 @@ For property types and examples, see [Core Concepts](../core-concepts.md#yaml-fr
 
 ## Projects
 
-TaskNotes supports organizing tasks into projects using note-based linking. Projects are represented as links to actual notes in your vault, allowing you to leverage Obsidian's linking and backlinking features for project management.
+SuperFlow supports organizing tasks into projects using note-based linking. Projects are represented as links to actual notes in your vault, allowing you to leverage Obsidian's linking and backlinking features for project management.
 
 This model avoids creating a separate project database. Any note can become a project anchor, and task/project relationships remain visible through normal Obsidian link tooling.
 
@@ -139,7 +139,7 @@ blockedBy:
 - `reltype` is stored with each dependency and defaults to `FINISHTOSTART` for dependencies created in the UI.
 - `gap` is optional and uses ISO&nbsp;8601 duration syntax (for example `PT4H` or `P2D`).
 
-Whenever a dependency is added, TaskNotes updates the upstream note’s `blocking` list so the reverse relationship stays synchronized. Removing a dependency automatically clears both sides.
+Whenever a dependency is added, SuperFlow updates the upstream note’s `blocking` list so the reverse relationship stays synchronized. Removing a dependency automatically clears both sides.
 
 ### Selecting dependencies in the UI
 
@@ -155,17 +155,17 @@ These controls currently create and manage finish-to-start style blockers. Advan
 
 ### Auto-Archiving
 
-TaskNotes can automatically archive tasks when they transition into a status that has auto-archiving enabled. This keeps completed work out of your active lists without requiring manual cleanup.
+SuperFlow can automatically archive tasks when they transition into a status that has auto-archiving enabled. This keeps completed work out of your active lists without requiring manual cleanup.
 
 Configure auto-archiving per status from **Settings → Task Properties → Task Statuses**. Each status card includes an **Auto-archive** toggle and a **Delay (minutes)** input (1–1440). When you turn the toggle on for a status, any task moved into that status is queued for archiving once the delay elapses. Moving the task to a different status before the timer expires cancels the pending archive automatically.
 
-The auto-archive queue runs in the background and persists across plugin restarts. If TaskNotes was closed while an archive was pending, the task will be archived shortly after the plugin loads again as long as it still matches the configured status.
+The auto-archive queue runs in the background and persists across plugin restarts. If SuperFlow was closed while an archive was pending, the task will be archived shortly after the plugin loads again as long as it still matches the configured status.
 
 This automation is intended to keep active views focused without manual cleanup, while still preserving archived task history in your vault.
 
 ## File Management and Templates
 
-TaskNotes supports configurable task folder locations, filename generation patterns, archive behavior, and body templates for newly created tasks.
+SuperFlow supports configurable task folder locations, filename generation patterns, archive behavior, and body templates for newly created tasks.
 
 These settings let you align task files with existing vault conventions (for example, date-based folders, project-based routing, or template-driven task note scaffolds).
 
@@ -174,7 +174,7 @@ For template variables, see [Template Variables Reference](template-variables.md
 
 ## Recurring Tasks
 
-TaskNotes recurring tasks use RFC 5545 RRule syntax with `DTSTART`, separate pattern definition from next occurrence scheduling, and support independent instance completion.
+SuperFlow recurring tasks use RFC 5545 RRule syntax with `DTSTART`, separate pattern definition from next occurrence scheduling, and support independent instance completion.
 
 For full behavior, examples, and edge cases, see [Recurring Tasks](recurring-tasks.md).
 

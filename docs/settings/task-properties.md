@@ -55,11 +55,11 @@ Status cards support drag-and-drop reordering.
 
 #### Boolean Status Values
 
-TaskNotes supports using boolean values (`true` and `false`) as status values, which integrates with Obsidian's native checkbox property format:
+SuperFlow supports using boolean values (`true` and `false`) as status values, which integrates with Obsidian's native checkbox property format:
 
-- When you set a task's status to `"true"` or `"false"` (case-insensitive), TaskNotes automatically converts it to a boolean in frontmatter
+- When you set a task's status to `"true"` or `"false"` (case-insensitive), SuperFlow automatically converts it to a boolean in frontmatter
 - When reading tasks with boolean status values from frontmatter, they are converted back to the strings `"true"` or `"false"`
-- This allows you to use Obsidian's native checkbox property toggles in the Properties panel while maintaining compatibility with TaskNotes
+- This allows you to use Obsidian's native checkbox property toggles in the Properties panel while maintaining compatibility with SuperFlow
 
 **Example:**
 ```yaml
@@ -208,7 +208,7 @@ These properties are system-managed and typically only require property key conf
 
 ## Feature Properties
 
-These properties are used by specific TaskNotes features and are not stored in task frontmatter:
+These properties are used by specific SuperFlow features and are not stored in task frontmatter:
 
 - **Pomodoros**: Property key for Pomodoro session counts. When Pomodoro data storage is set to "Daily notes", this property is written to daily notes rather than task files.
 - **ICS Event ID**: Property key for calendar event identifiers. Added to notes created from ICS calendar events to link them back to the source event.

@@ -1,14 +1,14 @@
 # Calendar Views
 
 
-TaskNotes provides two calendar-based views: the **Mini Calendar** and the **Calendar View**. Both operate as Bases views (`.base` files) and require the Bases core plugin to be enabled in Obsidian.
+SuperFlow provides two calendar-based views: the **Mini Calendar** and the **Calendar View**. Both operate as Bases views (`.base` files) and require the Bases core plugin to be enabled in Obsidian.
 Mini Calendar is date-density and navigation focused, while Calendar View is scheduling focused.
 
 ![Calendar Month View](../assets/views-calendar-month.png)
 
 ## Bases View Architecture
 
-Calendar views in TaskNotes v4 are implemented as Bases views, which means:
+Calendar views in SuperFlow v4 are implemented as Bases views, which means:
 
 - Calendar views are created as `.base` files in your vault
 - Configuration is controlled through YAML frontmatter in the base file
@@ -43,7 +43,7 @@ The Calendar View supports the following view modes:
 - **Week**: Week view with hourly time slots for detailed scheduling
 - **Day**: Single day view with hourly breakdown
 - **Year**: Annual overview showing event distribution across months
-- **List**: Chronological list of events. TaskNotes also includes a dedicated Agenda command that opens this mode via its own `.base` file for quick reviews.
+- **List**: Chronological list of events. SuperFlow also includes a dedicated Agenda command that opens this mode via its own `.base` file for quick reviews.
 - **Custom Days**: Configurable multi-day view (2-10 days)
 View modes can be switched within a single `.base` file based on planning horizon (day, week, month, year, or custom range).
 
@@ -158,13 +158,13 @@ The Calendar View supports bidirectional synchronization with external calendar 
 
 #### Synchronization Behavior
 
-- External calendar events appear alongside TaskNotes tasks in all calendar views
+- External calendar events appear alongside SuperFlow tasks in all calendar views
 - Drag and drop events to reschedule them - changes sync back to the external calendar service
-- Events from external calendars respect the same view options and display settings as native TaskNotes tasks
+- Events from external calendars respect the same view options and display settings as native SuperFlow tasks
 
 #### Configuration
 
-OAuth calendar connections are configured through the TaskNotes settings panel. Authentication uses standard OAuth flows to securely connect to external services.
+OAuth calendar connections are configured through the SuperFlow settings panel. Authentication uses standard OAuth flows to securely connect to external services.
 
 ### Time Entry Editor Modal
 

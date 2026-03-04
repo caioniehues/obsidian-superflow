@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Common issues and solutions for TaskNotes.
+Common issues and solutions for SuperFlow.
 
 When debugging, start with the smallest reproducible scenario: one affected task, one affected view, and current settings. Most issues fall into one of three categories: task identification mismatch, malformed frontmatter, or view/cache state.
 
@@ -8,21 +8,21 @@ When debugging, start with the smallest reproducible scenario: one affected task
 
 ### Views Not Loading
 
-**Symptoms**: TaskNotes views show errors or don't display tasks
+**Symptoms**: SuperFlow views show errors or don't display tasks
 
-First confirm Bases is enabled (`Settings -> Core Plugins -> Bases`), then restart Obsidian once. If views are still missing, verify `.base` files exist in `TaskNotes/Views/`. If needed, regenerate defaults from `Settings -> TaskNotes -> Integrations` (`Create default files`).
+First confirm Bases is enabled (`Settings -> Core Plugins -> Bases`), then restart Obsidian once. If views are still missing, verify `.base` files exist in `SuperFlow/Views/`. If needed, regenerate defaults from `Settings -> SuperFlow -> Integrations` (`Create default files`).
 
 ### Commands Open Wrong Files
 
 **Symptoms**: Ribbon icons or commands open unexpected files
 
-Check command mappings in `Settings -> TaskNotes -> General` (`View Commands`). Reset mappings that were changed unintentionally, then verify each referenced `.base` file exists at the configured path.
+Check command mappings in `Settings -> SuperFlow -> General` (`View Commands`). Reset mappings that were changed unintentionally, then verify each referenced `.base` file exists at the configured path.
 
 ## Common Issues
 
 ### Tasks Not Appearing in Views
 
-**Symptoms**: Tasks you've created don't show up in TaskNotes views
+**Symptoms**: Tasks you've created don't show up in SuperFlow views
 
 Common causes are task-identification mismatch, excluded folders, invalid frontmatter, or stale view state. Verify the configured task identifier is present, ensure files are not excluded, and confirm YAML frontmatter is valid and wrapped with `---` delimiters. If all data looks correct, reopen the affected view and then restart Obsidian to refresh cache state.
 
@@ -48,7 +48,7 @@ Reduce visible event layers first (scheduled/due/recurring/time entries), then i
 
 **Symptoms**: Natural language input doesn't extract expected task properties
 
-Enable NLP in `Settings -> TaskNotes -> Features`, then verify your trigger characters (`@`, `#`, `!` by default) and any custom status/priority mappings. If parsing still seems inconsistent, compare input against the syntax in [NLP API](nlp-api.md).
+Enable NLP in `Settings -> SuperFlow -> Features`, then verify your trigger characters (`@`, `#`, `!` by default) and any custom status/priority mappings. If parsing still seems inconsistent, compare input against the syntax in [NLP API](nlp-api.md).
 
 ### Time Tracking Issues
 
@@ -68,13 +68,13 @@ Open the task file directly and validate frontmatter syntax. Quote values that i
 
 **Symptoms**: Tasks missing expected properties or using default values unexpectedly
 
-Check field mappings first, then confirm Task Defaults. If properties are absent on older notes, add them manually or re-save through TaskNotes so current mapping rules are applied.
+Check field mappings first, then confirm Task Defaults. If properties are absent on older notes, add them manually or re-save through SuperFlow so current mapping rules are applied.
 
 ### Date Format Issues
 
 **Symptoms**: Dates not displaying correctly or causing parse errors
 
-Use supported formats (`YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SS`), quote where needed, and re-enter problematic dates via TaskNotes date pickers to normalize formatting and timezone handling.
+Use supported formats (`YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SS`), quote where needed, and re-enter problematic dates via SuperFlow date pickers to normalize formatting and timezone handling.
 
 ## Performance Troubleshooting
 
@@ -94,7 +94,7 @@ Verify credentials and loopback redirect configuration (`127.0.0.1` with dynamic
 
 **Symptoms**: Connected calendar shows old events or doesn't update
 
-Run manual refresh, check last-sync timestamps, reconnect if needed, and verify events exist in the source provider before debugging TaskNotes behavior.
+Run manual refresh, check last-sync timestamps, reconnect if needed, and verify events exist in the source provider before debugging SuperFlow behavior.
 
 ### ICS Subscriptions Not Loading
 
@@ -104,17 +104,17 @@ Confirm the ICS URL/file is reachable, run manual refresh, validate the feed for
 
 ### Calendar Sync Problems
 
-**Symptoms**: External calendar changes not reflected in TaskNotes
+**Symptoms**: External calendar changes not reflected in SuperFlow
 
-Check refresh intervals and force a manual refresh first. If source data is current but TaskNotes remains stale, remove and re-add the subscription to clear cached state.
+Check refresh intervals and force a manual refresh first. If source data is current but SuperFlow remains stale, remove and re-add the subscription to clear cached state.
 
 ## Getting Help
 
 ### Reporting Issues
 
-Report bugs on [GitHub Issues](https://github.com/callumalpass/tasknotes/issues). Include:
+Report bugs on [GitHub Issues](https://github.com/callumalpass/superflow/issues). Include:
 
-- TaskNotes and Obsidian versions
+- SuperFlow and Obsidian versions
 - Operating system
 - Steps to reproduce
 - Error messages (open console with `Ctrl/Cmd + Shift + I`)
@@ -122,10 +122,10 @@ Report bugs on [GitHub Issues](https://github.com/callumalpass/tasknotes/issues)
 
 ### Configuration Reset
 
-If all else fails, reset TaskNotes configuration:
+If all else fails, reset SuperFlow configuration:
 
 1. Close Obsidian
-2. Navigate to `.obsidian/plugins/tasknotes/`
+2. Navigate to `.obsidian/plugins/superflow/`
 3. Rename or delete `data.json`
 4. Restart Obsidian
 

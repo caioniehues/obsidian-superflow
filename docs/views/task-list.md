@@ -1,14 +1,14 @@
 # Task List View
 
 
-The Task List View displays tasks in a scrollable list format with filtering, sorting, and grouping capabilities. In TaskNotes v4, this view operates as a Bases view configured through YAML.
+The Task List View displays tasks in a scrollable list format with filtering, sorting, and grouping capabilities. In SuperFlow v4, this view operates as a Bases view configured through YAML.
 This view is optimized for high task volume and explicit filter definitions.
 
 ![Task List View](../assets/views-tasks-list.png)
 
 ## Bases Architecture
 
-Task List is implemented as a `.base` file located in `TaskNotes/Views/tasks-default.base` by default. It requires the Bases core plugin to be enabled.
+Task List is implemented as a `.base` file located in `SuperFlow/Views/tasks-default.base` by default. It requires the Bases core plugin to be enabled.
 
 ### What is Bases?
 
@@ -17,12 +17,12 @@ Bases is an official Obsidian core plugin built directly into Obsidian (not a co
 To enable Bases:
 1. Open `Settings -> Core Plugins`
 2. Enable "Bases"
-3. TaskNotes view commands will now open `.base` files from `TaskNotes/Views/`
+3. SuperFlow view commands will now open `.base` files from `SuperFlow/Views/`
 If commands open empty or unexpected views, first confirm Bases is enabled and the command path points to the intended `.base` file.
 
 ### View File Location
 
-When you use the "Open Tasks View" command or ribbon icon, TaskNotes opens the `.base` file configured under `Settings -> TaskNotes -> General` (`View Commands`) (initially `TaskNotes/Views/tasks-default.base`). The default file is created automatically the first time you use the command, and you can point the command to any other `.base` file if you maintain multiple task-list layouts.
+When you use the "Open Tasks View" command or ribbon icon, SuperFlow opens the `.base` file configured under `Settings -> SuperFlow -> General` (`View Commands`) (initially `SuperFlow/Views/tasks-default.base`). The default file is created automatically the first time you use the command, and you can point the command to any other `.base` file if you maintain multiple task-list layouts.
 
 ## Configuration
 
@@ -34,7 +34,7 @@ Task List views are configured through YAML frontmatter in the `.base` file. The
 # All Tasks
 
 views:
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "All Tasks"
     order:
       - note.status
@@ -51,7 +51,7 @@ views:
 
 ### Configuration Options
 
-**`type`**: Must be `tasknotesTaskList` for Task List views
+**`type`**: Must be `superflowTaskList` for Task List views
 
 **`name`**: Display name shown in the view header
 
@@ -77,9 +77,9 @@ Start with one or two simple filters, verify results, then layer complexity. Inc
 
 ### Property Mapping
 
-TaskNotes properties are accessed in Bases YAML using these paths:
+SuperFlow properties are accessed in Bases YAML using these paths:
 
-| TaskNotes Property | Bases Property Path | Description |
+| SuperFlow Property | Bases Property Path | Description |
 |-------------------|-------------------|-------------|
 | Status | `note.status` | Task status value |
 | Priority | `note.priority` | Priority level |
@@ -88,7 +88,7 @@ TaskNotes properties are accessed in Bases YAML using these paths:
 | Projects | `note.projects` | Associated projects |
 | Contexts | `note.contexts` | Task contexts |
 | Tags | `file.tags` | File tags |
-| Checklist progress | `file.tasks` | First-level markdown checkbox progress shown as the TaskNotes checklist progress bar |
+| Checklist progress | `file.tasks` | First-level markdown checkbox progress shown as the SuperFlow checklist progress bar |
 | Time estimate | `note.timeEstimate` | Estimated duration |
 | Recurrence | `note.recurrence` | Recurrence pattern |
 | Blocked by | `note.blockedBy` | Blocking dependencies |
@@ -96,7 +96,7 @@ TaskNotes properties are accessed in Bases YAML using these paths:
 | Created | `file.ctime` | File creation date |
 | Modified | `file.mtime` | File modification date |
 
-The exact property names depend on your TaskNotes field mapping settings (`Settings -> TaskNotes -> Task Properties`). The table above shows default mappings.
+The exact property names depend on your SuperFlow field mapping settings (`Settings -> SuperFlow -> Task Properties`). The table above shows default mappings.
 
 ## Filtering and Sorting
 
@@ -106,7 +106,7 @@ Edit the `.base` file to add filter conditions using Bases query syntax:
 
 ```yaml
 views:
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "High Priority Tasks"
     filters:
       and:
@@ -158,7 +158,7 @@ Add `groupBy` configuration to your view:
 
 ```yaml
 views:
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "Tasks by Status"
     groupBy:
       property: note.status
@@ -192,7 +192,7 @@ Collapsed/expanded state for each group is preserved across sessions.
 
 You can create multiple `.base` files for different task perspectives:
 
-1. Duplicate an existing `.base` file in `TaskNotes/Views/`
+1. Duplicate an existing `.base` file in `SuperFlow/Views/`
 2. Rename it (e.g., `High Priority.base`)
 3. Edit the YAML configuration for that view
 4. Open the file to see the customized view
@@ -203,7 +203,7 @@ You can create multiple `.base` files for different task perspectives:
 # Work Tasks
 
 views:
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "Work Context"
     filters:
       and:
@@ -219,10 +219,10 @@ views:
 
 ## Migrating from v3 Saved Views
 
-TaskNotes v3 stored filter configurations in plugin settings. These saved views are **not automatically migrated** to v4.
+SuperFlow v3 stored filter configurations in plugin settings. These saved views are **not automatically migrated** to v4.
 
 To recreate a v3 saved view:
-1. Create a new `.base` file in `TaskNotes/Views/`
+1. Create a new `.base` file in `SuperFlow/Views/`
 2. Translate your v3 filter conditions to Bases YAML syntax
 3. Configure sorting and grouping through YAML
 4. Save the file
@@ -233,7 +233,7 @@ The v3 FilterBar UI component no longer exists - all configuration is done throu
 
 The Task List View provides interaction with tasks through clicking and context menus:
 
-- **Click on a task**: Opens the task for editing or navigates to the task note (behavior configured in `Settings -> TaskNotes -> General` in click-action controls)
+- **Click on a task**: Opens the task for editing or navigates to the task note (behavior configured in `Settings -> SuperFlow -> General` in click-action controls)
 - **Right-click on a task**: Opens a context menu with actions:
   - Mark as complete
   - Change priority
@@ -242,7 +242,7 @@ The Task List View provides interaction with tasks through clicking and context 
   - Delete task
   - And more
 
-Context menu availability depends on your TaskNotes settings and task properties.
+Context menu availability depends on your SuperFlow settings and task properties.
 
 ## Virtual Scrolling
 
@@ -256,8 +256,8 @@ Virtual scrolling activates automatically and requires no configuration. When ac
 
 ## Further Reading
 
-- [Default Base Templates](default-base-templates.md) - Complete templates for all TaskNotes views
+- [Default Base Templates](default-base-templates.md) - Complete templates for all SuperFlow views
 - [Bases Plugin Documentation](https://help.obsidian.md/Plugins/Bases) - Official Obsidian documentation for Bases syntax and features
 - [Kanban View](kanban-view.md) - Alternative board-based task visualization
 - [Calendar Views](calendar-views.md) - Time-based task visualization
-- [Views Overview](../views.md) - All available TaskNotes views
+- [Views Overview](../views.md) - All available SuperFlow views

@@ -1,6 +1,6 @@
 # Translation Workflow
 
-TaskNotes ships with a lightweight i18n system that keeps interface copy separate from natural-language parsing patterns. Follow this guide to add or update translations.
+SuperFlow ships with a lightweight i18n system that keeps interface copy separate from natural-language parsing patterns. Follow this guide to add or update translations.
 
 ## Folder Structure
 

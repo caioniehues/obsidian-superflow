@@ -1,14 +1,14 @@
 ---
 title: Default Base Templates
-description: Default base file templates for TaskNotes views
+description: Default base file templates for SuperFlow views
 dateModified: 2025-12-02T12:00:00+1100
 ---
 
 # Default Base Templates
 
-TaskNotes automatically generates [Bases](https://help.obsidian.md/Bases/Introduction+to+Bases) files for its built-in views when you first open them. These templates are configured based on your TaskNotes settings, including custom property names, statuses, and task identification methods.
+SuperFlow automatically generates [Bases](https://help.obsidian.md/Bases/Introduction+to+Bases) files for its built-in views when you first open them. These templates are configured based on your SuperFlow settings, including custom property names, statuses, and task identification methods.
 
-This page shows the default templates as they would appear with TaskNotes' default settings. The actual templates generated in your vault may differ if you've customized your settings.
+This page shows the default templates as they would appear with SuperFlow' default settings. The actual templates generated in your vault may differ if you've customized your settings.
 This page documents generated defaults. It is reference material for understanding and editing `.base` files already created in your vault.
 
 ## Default settings assumptions
@@ -111,7 +111,7 @@ YAML examples in this document are complete snapshots. In custom files, targeted
 
 ```yaml
 # Mini Calendar
-# Generated with your TaskNotes settings
+# Generated with your SuperFlow settings
 
 filters:
   and:
@@ -165,7 +165,7 @@ formulas:
   nextDateWeek: '...'  # YYYY-[W]WW format for next date
 
 views:
-  - type: tasknotesMiniCalendar
+  - type: superflowMiniCalendar
     name: "Due"
     order:
       - status
@@ -184,14 +184,14 @@ views:
       - property: due
         direction: ASC
     dateProperty: due
-  - type: tasknotesMiniCalendar
+  - type: superflowMiniCalendar
     name: "Scheduled"
     order: []
     dateProperty: scheduled
-  - type: tasknotesMiniCalendar
+  - type: superflowMiniCalendar
     name: "Created"
     dateProperty: file.ctime
-  - type: tasknotesMiniCalendar
+  - type: superflowMiniCalendar
     name: "Modified"
     dateProperty: file.mtime
 ```
@@ -211,7 +211,7 @@ formulas:
   # ... same formulas as Mini Calendar above ...
 
 views:
-  - type: tasknotesKanban
+  - type: superflowKanban
     name: "Kanban Board"
     order:
       - status
@@ -252,7 +252,7 @@ formulas:
   # ... same formulas as Mini Calendar above ...
 
 views:
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "All Tasks"
     order:
       - status
@@ -270,7 +270,7 @@ views:
     sort:
       - column: due
         direction: ASC
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "Not Blocked"
     filters:
       and:
@@ -306,7 +306,7 @@ views:
     sort:
       - column: formula.urgencyScore
         direction: DESC
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "Today"
     filters:
       and:
@@ -340,7 +340,7 @@ views:
     sort:
       - column: formula.urgencyScore
         direction: DESC
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "Overdue"
     filters:
       and:
@@ -372,7 +372,7 @@ views:
     sort:
       - column: formula.urgencyScore
         direction: DESC
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "This Week"
     filters:
       and:
@@ -410,7 +410,7 @@ views:
     sort:
       - column: formula.urgencyScore
         direction: DESC
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "Unscheduled"
     filters:
       and:
@@ -460,7 +460,7 @@ formulas:
   # ... same formulas as Mini Calendar above ...
 
 views:
-  - type: tasknotesCalendar
+  - type: superflowCalendar
     name: "Calendar"
     order:
       - status
@@ -507,7 +507,7 @@ formulas:
   # ... same formulas as Mini Calendar above ...
 
 views:
-  - type: tasknotesCalendar
+  - type: superflowCalendar
     name: "Agenda"
     order:
       - status
@@ -551,7 +551,7 @@ formulas:
   # ... same formulas as Mini Calendar above ...
 
 views:
-  - type: tasknotesKanban
+  - type: superflowKanban
     name: "Subtasks"
     filters:
       and:
@@ -573,7 +573,7 @@ views:
     groupBy:
       property: status
       direction: ASC
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "Projects"
     filters:
       and:
@@ -591,7 +591,7 @@ views:
       - recurrence
       - complete_instances
       - file.tasks
-  - type: tasknotesTaskList
+  - type: superflowTaskList
     name: "Blocked By"
     filters:
       and:
@@ -610,7 +610,7 @@ views:
       - recurrence
       - complete_instances
       - file.tasks
-  - type: tasknotesKanban
+  - type: superflowKanban
     name: "Blocking"
     filters:
       and:
@@ -636,14 +636,14 @@ views:
 
 ## Customization
 
-If you've customized your TaskNotes settings (e.g., renamed properties, added custom statuses, or changed task identification methods), the generated templates will reflect those changes:
+If you've customized your SuperFlow settings (e.g., renamed properties, added custom statuses, or changed task identification methods), the generated templates will reflect those changes:
 
 - **Custom property names**: If you've renamed `due` to `deadline`, the templates will use `deadline`
 - **Custom statuses**: The incomplete task filters will check against all your configured completed statuses
 - **Custom priorities**: The `priorityWeight` formula will include all your configured priorities with their weights
 - **Property-based identification**: If you identify tasks by a property instead of a tag, the filters will use that property
 - **Custom visible properties**: The `order` arrays will include your configured visible properties
-- **Essential card properties**: `file.name`, recurrence, `complete_instances`, and `file.tasks` are always included in generated `order` arrays for TaskNotes card rendering
+- **Essential card properties**: `file.name`, recurrence, `complete_instances`, and `file.tasks` are always included in generated `order` arrays for SuperFlow card rendering
 After major settings changes, regenerate default files and diff against customized versions to merge template updates.
 
 ## Related

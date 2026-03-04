@@ -8,7 +8,7 @@ Calendar behavior is configured across multiple tabs.
 
 Location:
 
-- `Settings -> TaskNotes -> Appearance`
+- `Settings -> SuperFlow -> Appearance`
 
 Controls include:
 
@@ -23,7 +23,7 @@ Controls include:
 
 Location:
 
-- `Settings -> TaskNotes -> Features`
+- `Settings -> SuperFlow -> Features`
 
 Controls include:
 
@@ -34,7 +34,7 @@ Controls include:
 
 Location:
 
-- `Settings -> TaskNotes -> Integrations`
+- `Settings -> SuperFlow -> Integrations`
 
 Controls include:
 

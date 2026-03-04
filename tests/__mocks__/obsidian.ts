@@ -779,9 +779,13 @@ export class Setting {
   constructor(containerEl: HTMLElement) {
     this.containerEl = containerEl;
     this.settingEl = document.createElement('div');
+    this.settingEl.classList.add('setting-item');
     this.nameEl = document.createElement('div');
+    this.nameEl.classList.add('setting-item-name');
     this.descEl = document.createElement('div');
+    this.descEl.classList.add('setting-item-description');
     this.controlEl = document.createElement('div');
+    this.controlEl.classList.add('setting-item-control');
     // Append structure similar to Obsidian: name, controls, description inside settingEl
     this.settingEl.appendChild(this.nameEl);
     this.settingEl.appendChild(this.controlEl);

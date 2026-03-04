@@ -1,7 +1,7 @@
 # Task Reminders
 
 
-TaskNotes reminders use iCalendar `VALARM` semantics and support both relative and absolute reminder types.
+SuperFlow reminders use iCalendar `VALARM` semantics and support both relative and absolute reminder types.
 
 The reminders system is designed to support both habit-like workflows ("always remind me 15 minutes before") and one-off commitments ("alert me exactly at this date and time"). Most users mix both styles depending on the task.
 
@@ -112,7 +112,7 @@ These indicators are intended to make reminders discoverable in list-heavy views
 
 Default reminders can be configured in:
 
-`Settings -> TaskNotes -> Task Properties -> Reminders`
+`Settings -> SuperFlow -> Task Properties -> Reminders`
 
 Defaults are applied to:
 

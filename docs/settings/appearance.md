@@ -13,7 +13,7 @@ Checklist progress is available as a visible property in task cards. In Bases vi
 
 ## Display Formatting
 
-Use **Time format** to switch between 12-hour and 24-hour display across all TaskNotes surfaces.
+Use **Time format** to switch between 12-hour and 24-hour display across all SuperFlow surfaces.
 
 ## Calendar View
 

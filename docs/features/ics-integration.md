@@ -1,6 +1,6 @@
 # ICS Calendar Event Integration
 
-TaskNotes can use ICS calendar events to create notes and tasks directly from calendar entries.
+SuperFlow can use ICS calendar events to create notes and tasks directly from calendar entries.
 ICS integration creates linked notes and tasks from event data without manual re-entry.
 
 ## Overview
@@ -16,7 +16,7 @@ Event context, notes, and follow-up tasks remain connected through frontmatter l
 
 ## Event Information Modal
 
-When you interact with a calendar event in TaskNotes, an information modal displays event details and available actions. The modal provides:
+When you interact with a calendar event in SuperFlow, an information modal displays event details and available actions. The modal provides:
 
 ### Event Details
 
@@ -60,7 +60,7 @@ The note creation process allows customization of the generated content:
 When a template is specified:
 
 - The template file is processed with ICS-specific variables
-- Standard TaskNotes template variables are also available
+- Standard SuperFlow template variables are also available
 - Template content replaces the default event description format
 - Frontmatter from templates is merged with required ICS fields
 Templates apply a consistent note structure across imported events.
@@ -136,7 +136,7 @@ The ICS integration extends the field mapping system with two new fields:
 
 ## Template Variables
 
-Templates used for ICS content creation have access to event-specific variables in addition to standard TaskNotes variables:
+Templates used for ICS content creation have access to event-specific variables in addition to standard SuperFlow variables:
 
 ### Event Information
 
@@ -151,14 +151,14 @@ Templates used for ICS content creation have access to event-specific variables 
 
 ### Standard Variables
 
-All standard TaskNotes template variables remain available:
+All standard SuperFlow template variables remain available:
 - `{{title}}`, `{{date}}`, `{{time}}`
 - `{{priority}}`, `{{status}}`, `{{contexts}}`
 - And others as documented in the template system
 
 ## Configuration
 
-ICS integration settings are located under `Settings -> TaskNotes -> Integrations`:
+ICS integration settings are located under `Settings -> SuperFlow -> Integrations`:
 
 ### Default Templates
 
@@ -182,7 +182,7 @@ Example folder paths:
 
 ### Filename Formats
 
-The system uses the standard TaskNotes filename generation with event-specific context, ensuring unique and descriptive filenames for created content.
+The system uses the standard SuperFlow filename generation with event-specific context, ensuring unique and descriptive filenames for created content.
 
 ## Technical Implementation
 

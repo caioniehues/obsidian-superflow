@@ -11,7 +11,7 @@ Task storage settings define where new and converted task files are created and 
 
 ## Task Identification
 
-TaskNotes can identify task notes using either a tag or a frontmatter property.
+SuperFlow can identify task notes using either a tag or a frontmatter property.
 
 Use **Identify tasks by** to select a strategy.
 

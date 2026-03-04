@@ -1,10 +1,10 @@
-# TaskNotes Webhook Transform Examples
+# SuperFlow Webhook Transform Examples
 
 This directory contains example transform files that demonstrate how to customize webhook payloads for different services and formats. Transform files allow you to modify the structure and content of webhook payloads before they're sent to your endpoints.
 
 ## What are Transform Files?
 
-Transform files let you customize webhook payloads to match the specific format required by different services like Discord, Slack, Microsoft Teams, or custom APIs. TaskNotes supports two types of transform files:
+Transform files let you customize webhook payloads to match the specific format required by different services like Discord, Slack, Microsoft Teams, or custom APIs. SuperFlow supports two types of transform files:
 
 - **JavaScript files (`.js`)** - Maximum flexibility with custom logic
 - **JSON templates (`.json`)** - Simple variable substitution
@@ -14,10 +14,10 @@ Transform files let you customize webhook payloads to match the specific format 
 ### JavaScript Transforms
 
 #### `discord-webhook.js`
-Transforms TaskNotes webhooks into Discord-compatible embeds with:
+Transforms SuperFlow webhooks into Discord-compatible embeds with:
 - Rich embed formatting with colors and emojis
 - Event-specific styling and information
-- Support for all TaskNotes webhook events including the new `recurring.instance.completed` event
+- Support for all SuperFlow webhook events including the new `recurring.instance.completed` event
 - Comprehensive error handling and fallback content
 
 **Usage:** Copy to your vault and specify the file path in your webhook configuration.
@@ -53,7 +53,7 @@ Microsoft Teams connector card format:
 Copy any example file to your Obsidian vault. You can place them anywhere, but consider creating a dedicated folder like `webhooks/transforms/`.
 
 ### 2. Configure Webhook
-When adding or editing a webhook in TaskNotes settings:
+When adding or editing a webhook in SuperFlow settings:
 1. Enter your webhook URL
 2. Select the events you want to receive
 3. In the "Transform File" field, enter the path to your transform file (e.g., `webhooks/transforms/discord-webhook.js`)
@@ -158,7 +158,7 @@ JSON templates use simple variable substitution with `${path.to.value}` syntax:
 1. Start with a simple transform that returns the original payload
 2. Add small changes incrementally
 3. Use webhook.site or the built-in test server to inspect outputs
-4. Check TaskNotes console for transformation errors
+4. Check SuperFlow console for transformation errors
 
 ### Common Issues
 - **Syntax errors:** Validate JavaScript syntax and JSON format

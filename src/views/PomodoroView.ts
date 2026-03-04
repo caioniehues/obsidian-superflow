@@ -15,6 +15,8 @@ import {
 import { openTaskSelector } from "../modals/TaskSelectorWithCreateModal";
 import { createTaskCard } from "../ui/TaskCard";
 import { convertInternalToUserProperties } from "../utils/propertyMapping";
+import { FocusModeSelector } from "../ui/FocusModeSelector";
+import type { FocusMode } from "../types";
 
 export class PomodoroView extends ItemView {
 	plugin: TaskNotesPlugin;
@@ -36,6 +38,9 @@ export class PomodoroView extends ItemView {
 	private addTimeButton: HTMLButtonElement | null = null;
 	private subtractTimeButton: HTMLButtonElement | null = null;
 	private skipBreakButton: HTMLButtonElement | null = null;
+	private focusModeSelector: FocusModeSelector | null = null;
+	private focusModeSelectorContainer: HTMLElement | null = null;
+	private pendingFocusMode: FocusMode = "pomodoro";
 
 	// Cache stat elements to avoid innerHTML
 	private statElements: {
@@ -198,6 +203,8 @@ export class PomodoroView extends ItemView {
 		this.currentSelectedTask = null;
 		this.taskCardContainer = null;
 		this.statElements = { pomodoros: null };
+		this.focusModeSelector = null;
+		this.focusModeSelectorContainer = null;
 
 		this.contentEl.empty();
 	}
@@ -210,6 +217,16 @@ export class PomodoroView extends ItemView {
 			cls: "pomodoro-view__status",
 			text: this.t("views.pomodoro.status.ready"),
 		});
+
+		// Focus mode selector — insert between status and timer
+		this.pendingFocusMode = (this.plugin.settings.defaultFocusMode as FocusMode) ?? "pomodoro";
+		this.focusModeSelectorContainer = container.createDiv({ cls: "pomodoro-view__mode-selector" });
+		this.focusModeSelector = new FocusModeSelector({
+			container: this.focusModeSelectorContainer,
+			currentMode: this.pendingFocusMode,
+			onModeChange: (mode) => this.handleFocusModeChange(mode),
+		});
+		this.focusModeSelector.render();
 
 		// Timer display with progress circle
 		const timerSection = container.createDiv({ cls: "pomodoro-view__timer-section" });
@@ -385,9 +402,10 @@ export class PomodoroView extends ItemView {
 						await this.plugin.pomodoroService.startBreak(true);
 					} else {
 						// Default to work session
-						await this.plugin.pomodoroService.startPomodoro(
-							this.currentSelectedTask || undefined
-						);
+						await this.plugin.focusEngine.startFocus({
+							mode: this.pendingFocusMode,
+							task: this.currentSelectedTask || undefined,
+						});
 					}
 				}
 			} finally {
@@ -978,9 +996,31 @@ export class PomodoroView extends ItemView {
 			this.subtractTimeButton.removeClass("pomodoro-view__time-adjust-button--hidden");
 		}
 
+		// Disable mode selector during active session
+		const isSessionActive = !!(state.currentSession);
+		this.focusModeSelector?.setDisabled(isSessionActive);
+		this.applyFocusModeVisibility();
+
 		this.updateStats().catch((error) => {
 			console.error("Failed to update stats:", error);
 		});
+	}
+
+	private handleFocusModeChange(mode: FocusMode): void {
+		this.pendingFocusMode = mode;
+		this.plugin.settings.defaultFocusMode = mode;
+		void this.plugin.saveSettings();
+		this.applyFocusModeVisibility();
+	}
+
+	private applyFocusModeVisibility(): void {
+		if (!this.progressContainer) return;
+		const state = this.focusModeSelector?.getState();
+		if (state?.showCircularProgress === false) {
+			this.progressContainer.style.display = "none";
+		} else {
+			this.progressContainer.style.display = "";
+		}
 	}
 
 	private updateTimer(seconds: number) {

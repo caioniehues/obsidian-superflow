@@ -1,6 +1,6 @@
 # Property-based Task Identification
 
-When you choose to identify task files by a frontmatter property (instead of a tag), TaskNotes will match notes whose frontmatter property equals the configured value.
+When you choose to identify task files by a frontmatter property (instead of a tag), SuperFlow will match notes whose frontmatter property equals the configured value.
 
 ## Boolean values
 - Enter the setting value as true or false (without quotes) in the settings UI.

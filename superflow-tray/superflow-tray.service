@@ -1,0 +1,14 @@
+[Unit]
+Description=SuperFlow Tray Companion
+Documentation=https://github.com/caio/obsidian-superflow
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/superflow-tray
+Restart=on-failure
+RestartSec=5
+Environment=RUST_LOG=superflow_tray=info
+
+[Install]
+WantedBy=default.target

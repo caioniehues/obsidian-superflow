@@ -7,30 +7,30 @@ These settings control the integration with other plugins and services, such as 
 
 ## Bases Integration
 
-TaskNotes v4 uses Obsidian's Bases core plugin for its main views. For setup instructions, see [Core Concepts](../core-concepts.md#bases-integration).
+SuperFlow v4 uses Obsidian's Bases core plugin for its main views. For setup instructions, see [Core Concepts](../core-concepts.md#bases-integration).
 
 ### View Commands Configuration
 
-View command settings map TaskNotes commands and ribbon actions to specific `.base` files. This is useful when you maintain custom variants of the default views and want first-class command access to those files.
+View command settings map SuperFlow commands and ribbon actions to specific `.base` files. This is useful when you maintain custom variants of the default views and want first-class command access to those files.
 
-Access these settings in **Settings → TaskNotes → General → View Commands**.
+Access these settings in **Settings → SuperFlow → General → View Commands**.
 
 Default mappings:
 
-- **Open Mini Calendar View** → `TaskNotes/Views/mini-calendar-default.base`
-- **Open Kanban View** → `TaskNotes/Views/kanban-default.base`
-- **Open Tasks View** → `TaskNotes/Views/tasks-default.base`
-- **Open Calendar View** → `TaskNotes/Views/calendar-default.base`
-- **Open Agenda View** → `TaskNotes/Views/agenda-default.base`
-- **Relationships Widget** → `TaskNotes/Views/relationships.base`
+- **Open Mini Calendar View** → `SuperFlow/Views/mini-calendar-default.base`
+- **Open Kanban View** → `SuperFlow/Views/kanban-default.base`
+- **Open Tasks View** → `SuperFlow/Views/tasks-default.base`
+- **Open Calendar View** → `SuperFlow/Views/calendar-default.base`
+- **Open Agenda View** → `SuperFlow/Views/agenda-default.base`
+- **Relationships Widget** → `SuperFlow/Views/relationships.base`
 
 Each command allows you to specify a custom `.base` file path and includes a reset button to restore the default path.
 
-**Create Default Files**: Button to generate all default `.base` files in the `TaskNotes/Views/` directory. Existing files are not overwritten.
+**Create Default Files**: Button to generate all default `.base` files in the `SuperFlow/Views/` directory. Existing files are not overwritten.
 
 ## OAuth Calendar Integration
 
-Connect Google Calendar or Microsoft Outlook to sync events bidirectionally with TaskNotes. Events automatically refresh every 15 minutes and sync when local changes are made (such as dragging events to reschedule).
+Connect Google Calendar or Microsoft Outlook to sync events bidirectionally with SuperFlow. Events automatically refresh every 15 minutes and sync when local changes are made (such as dragging events to reschedule).
 
 ### Setup Requirements
 

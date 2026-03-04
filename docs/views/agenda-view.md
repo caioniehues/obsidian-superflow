@@ -7,9 +7,9 @@ The Agenda view is a dedicated `.base` file that opens the calendar in list mode
 
 ## File Location
 
-- Default file: `TaskNotes/Views/agenda-default.base`
+- Default file: `SuperFlow/Views/agenda-default.base`
 - Command: **Open Agenda View** (ribbon icon and command palette)
-- Configure the file path in **Settings → TaskNotes → General → View Commands**
+- Configure the file path in **Settings → SuperFlow → General → View Commands**
 
 The file is created automatically the first time you run the command, and you can replace it with your own `.base` file if you maintain multiple agendas.
 
@@ -19,7 +19,7 @@ The stock agenda file renders the calendar in `listWeek` mode:
 
 ```yaml
 views:
-  - type: tasknotesCalendar
+  - type: superflowCalendar
     name: "Agenda"
     calendarView: "listWeek"
     listDayCount: 7
@@ -49,4 +49,4 @@ Because the view runs inside Bases, any YAML changes are applied immediately aft
 
 - Use the calendar toolbar arrows (Previous/Next) to move the agenda window forward or backward, or simply scroll the list to review upcoming entries
 - Saved views within Bases let you maintain multiple agenda variants (e.g., "Work Week" vs. "Personal")
-- Calendar display options (show due, show scheduled, etc.) persist when you save the `.base` file, so you can maintain one agenda that includes external events and another that focuses strictly on TaskNotes tasks
+- Calendar display options (show due, show scheduled, etc.) persist when you save the `.base` file, so you can maintain one agenda that includes external events and another that focuses strictly on SuperFlow tasks

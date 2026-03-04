@@ -1,10 +1,10 @@
 # Features
 
-TaskNotes includes task organization, time tracking, and calendar integration features.
+SuperFlow includes task organization, time tracking, and calendar integration features.
 
 ## Task Management
 
-TaskNotes gives each task a structured set of properties, including status, priority, due and scheduled dates, tags, contexts, and optional estimates. Because these values live in frontmatter, they stay readable and portable while still powering advanced filtering and grouping in Bases.
+SuperFlow gives each task a structured set of properties, including status, priority, due and scheduled dates, tags, contexts, and optional estimates. Because these values live in frontmatter, they stay readable and portable while still powering advanced filtering and grouping in Bases.
 
 Reminders can be relative (for example, "3 days before due") or absolute, and completed tasks can be archived automatically to keep active work surfaces focused.
 
@@ -14,7 +14,7 @@ For reminder setup and data format, see [Task Reminders](features/reminders.md).
 
 ## Filtering and Views
 
-TaskNotes uses Obsidian's Bases engine for filtering, sorting, and grouping. Each view is a `.base` file, so you can inspect or edit its query logic directly instead of relying on hidden plugin state.
+SuperFlow uses Obsidian's Bases engine for filtering, sorting, and grouping. Each view is a `.base` file, so you can inspect or edit its query logic directly instead of relying on hidden plugin state.
 
 This design also makes view customization practical: you can duplicate a default view, tweak grouping or formulas, and keep both versions side by side in your vault.
 
@@ -40,7 +40,7 @@ See [Time Management](features/time-management.md) for details.
 
 ## Calendar Integration
 
-TaskNotes supports bidirectional OAuth sync with Google Calendar and Microsoft Outlook, plus read-only ICS subscriptions for external feeds. Calendar views include month, week, day, year, and list modes, and drag-and-drop scheduling can update tasks directly.
+SuperFlow supports bidirectional OAuth sync with Google Calendar and Microsoft Outlook, plus read-only ICS subscriptions for external feeds. Calendar views include month, week, day, year, and list modes, and drag-and-drop scheduling can update tasks directly.
 
 For planning workflows, time-blocking and calendar-linked task updates connect backlog management with schedule execution in the same workspace.
 
@@ -56,12 +56,12 @@ See [User Fields](features/user-fields.md) for details.
 
 ## Integrations
 
-Beyond calendar sync, TaskNotes includes an HTTP API and webhook support for automation workflows, external dashboards, or custom tooling.
+Beyond calendar sync, SuperFlow includes an HTTP API and webhook support for automation workflows, external dashboards, or custom tooling.
 
 See [Integrations](settings/integrations.md) for details.
 
 ## REST API
 
-External applications can interact with TaskNotes through its REST API for automation, reporting, and integration with other tools.
+External applications can interact with SuperFlow through its REST API for automation, reporting, and integration with other tools.
 
 See [HTTP API](HTTP_API.md) for details.

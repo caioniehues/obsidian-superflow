@@ -288,6 +288,10 @@ export const DEFAULT_SETTINGS: TaskNotesSettings = {
 	pomodoroSoundVolume: 50,
 	pomodoroStorageLocation: "plugin",
 	pomodoroMobileSidebar: "tab",
+	// Focus engine defaults
+	defaultFocusMode: "pomodoro",
+	enforceBreaks: "soft",
+	autoStartFocusOnTracking: false,
 	// Editor defaults
 	enableTaskLinkOverlay: true,
 	disableOverlayOnAlias: false,
@@ -324,9 +328,13 @@ export const DEFAULT_SETTINGS: TaskNotesSettings = {
 	showReleaseNotesOnUpdate: true,
 	// Status bar defaults
 	showTrackedTasksInStatusBar: false,
+	showTotalTimeToday: false,
 	// Time tracking defaults
 	autoStopTimeTrackingOnComplete: true,
 	autoStopTimeTrackingNotification: false,
+	trackingReminderMinutes: 30,
+	// Planning defaults
+	dailyPlanningOnOpen: false,
 	// Relationships widget defaults (unified subtasks, projects, and dependencies)
 	showRelationships: true,
 	relationshipsPosition: "bottom",

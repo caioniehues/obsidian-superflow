@@ -31,6 +31,8 @@ import {
 	POMODORO_VIEW_TYPE,
 	POMODORO_STATS_VIEW_TYPE,
 	STATS_VIEW_TYPE,
+	DAILY_SUMMARY_VIEW_TYPE,
+	WEEKLY_SUMMARY_VIEW_TYPE,
 	TaskInfo,
 	EVENT_DATA_CHANGED,
 	EVENT_TASK_UPDATED,
@@ -41,11 +43,14 @@ import {
 import { PomodoroView } from "./views/PomodoroView";
 import { PomodoroStatsView } from "./views/PomodoroStatsView";
 import { StatsView } from "./views/StatsView";
+import { DailySummaryView } from "./views/DailySummaryView";
+import { WeeklySummaryView } from "./views/WeeklySummaryView";
 import { TaskCreationModal } from "./modals/TaskCreationModal";
 import { TaskEditModal } from "./modals/TaskEditModal";
 import { openTaskSelector } from "./modals/TaskSelectorWithCreateModal";
 import { TimeEntryEditorModal } from "./modals/TimeEntryEditorModal";
 import { PomodoroService } from "./services/PomodoroService";
+import { FocusEngineService } from "./services/FocusEngineService";
 import { formatTime, getActiveTimeEntry } from "./utils/helpers";
 import { convertUTCToLocalCalendarDate, getCurrentTimestamp } from "./utils/dateUtils";
 import { TaskManager } from "./utils/TaskManager";
@@ -82,6 +87,7 @@ import {
 import { ICSSubscriptionService } from "./services/ICSSubscriptionService";
 import { ICSNoteService } from "./services/ICSNoteService";
 import { StatusBarService } from "./services/StatusBarService";
+import { StateWriterService } from "./services/StateWriterService";
 import { ProjectSubtasksService } from "./services/ProjectSubtasksService";
 import { ExpandedProjectsService } from "./services/ExpandedProjectsService";
 import { NotificationService } from "./services/NotificationService";
@@ -96,6 +102,9 @@ import { GoogleCalendarService } from "./services/GoogleCalendarService";
 import { MicrosoftCalendarService } from "./services/MicrosoftCalendarService";
 import { CalendarProviderRegistry } from "./services/CalendarProvider";
 import { TaskCalendarSyncService } from "./services/TaskCalendarSyncService";
+import { PlanningService } from "./services/PlanningService";
+import { PlanningModal } from "./modals/PlanningModal";
+import { TrackingReminderService } from "./services/TrackingReminderService";
 
 interface TranslatedCommandDefinition {
 	id: string;
@@ -153,7 +162,9 @@ export default class TaskNotesPlugin extends Plugin {
 	domReconciler: DOMReconciler;
 	uiStateManager: UIStateManager;
 
-	// Pomodoro service
+	// Focus engine (wraps PomodoroService with multi-mode support)
+	focusEngine: FocusEngineService;
+	// Backward-compatible alias — delegates to focusEngine.pomodoroService
 	pomodoroService: PomodoroService;
 
 	// Customization services
@@ -192,6 +203,15 @@ export default class TaskNotesPlugin extends Plugin {
 
 	// Status bar service
 	statusBarService: StatusBarService;
+
+	// State writer service (writes plugin state to disk for external tools)
+	stateWriterService: StateWriterService;
+
+	// Planning service for daily planning modal
+	planningService: PlanningService;
+
+	// Tracking reminder service (nudges user when no task is tracked)
+	trackingReminderService: TrackingReminderService | null = null;
 
 	// Notification service
 	notificationService: NotificationService;
@@ -363,6 +383,8 @@ export default class TaskNotesPlugin extends Plugin {
 		this.taskSelectionService = new TaskSelectionService(this);
 		this.dragDropManager = new DragDropManager(this);
 		this.statusBarService = new StatusBarService(this);
+		this.stateWriterService = new StateWriterService(this);
+		this.planningService = new PlanningService(this);
 		this.notificationService = new NotificationService(this);
 		this.viewPerformanceService = new ViewPerformanceService(this);
 
@@ -520,6 +542,8 @@ export default class TaskNotesPlugin extends Plugin {
 				(leaf) => new PomodoroStatsView(leaf, this)
 			);
 			this.registerView(STATS_VIEW_TYPE, (leaf) => new StatsView(leaf, this));
+			this.registerView(DAILY_SUMMARY_VIEW_TYPE, (leaf) => new DailySummaryView(leaf, this));
+			this.registerView(WEEKLY_SUMMARY_VIEW_TYPE, (leaf) => new WeeklySummaryView(leaf, this));
 
 			this.registerView(
 				RELEASE_NOTES_VIEW_TYPE,
@@ -555,6 +579,17 @@ export default class TaskNotesPlugin extends Plugin {
 
 			// Initialize status bar service
 			this.statusBarService.initialize();
+
+			// Initialize state writer service (writes plugin state to disk for external tools)
+			await this.stateWriterService.init();
+
+			// Auto-open daily planning modal on first vault open of the day (if enabled)
+			const shouldPlan = await this.planningService.shouldTriggerPlanning();
+			if (shouldPlan) {
+				this.planningService.startPlanning();
+				new PlanningModal(this.app, this, this.planningService).open();
+				await this.planningService.markPlanningTriggered();
+			}
 
 			// Initialize notification service
 			await this.notificationService.initialize();
@@ -593,9 +628,14 @@ export default class TaskNotesPlugin extends Plugin {
 		// Use setTimeout to defer initialization to next tick
 		setTimeout(async () => {
 			try {
-				// Initialize Pomodoro service
-				this.pomodoroService = new PomodoroService(this);
-				await this.pomodoroService.initialize();
+				// Initialize Focus Engine (wraps PomodoroService)
+				this.focusEngine = new FocusEngineService(this);
+				await this.focusEngine.initialize();
+				this.pomodoroService = this.focusEngine.pomodoroService;
+
+				// Initialize tracking reminder service
+				this.trackingReminderService = new TrackingReminderService(this, this.statusBarService);
+				this.trackingReminderService.initialize();
 
 				// Initialize ICS subscription service (instance already created in onload)
 				await this.icsSubscriptionService.initialize();
@@ -1120,9 +1160,9 @@ export default class TaskNotesPlugin extends Plugin {
 			perfMonitor.logSummary();
 		}
 
-		// Clean up Pomodoro service
-		if (this.pomodoroService) {
-			this.pomodoroService.cleanup();
+		// Clean up FocusEngine (which internally cleans up PomodoroService)
+		if (this.focusEngine) {
+			this.focusEngine.cleanup();
 		}
 
 		// Clean up FilterService
@@ -1209,6 +1249,17 @@ export default class TaskNotesPlugin extends Plugin {
 		// Clean up status bar service
 		if (this.statusBarService) {
 			this.statusBarService.destroy();
+		}
+
+		// Clean up state writer service
+		if (this.stateWriterService) {
+			this.stateWriterService.destroy();
+		}
+
+		// Clean up tracking reminder service
+		if (this.trackingReminderService) {
+			this.trackingReminderService.destroy();
+			this.trackingReminderService = null;
 		}
 
 		// Clean up notification service
@@ -1747,6 +1798,77 @@ export default class TaskNotesPlugin extends Plugin {
 				nameKey: "commands.createOrOpenTask",
 				callback: async () => {
 					await this.openTaskSelectorWithCreate();
+				},
+			},
+			// SuperFlow commands
+			{
+				id: "superflow:toggle-timer",
+				nameKey: "superflow.toggleTimer",
+				callback: async () => {
+					if (this.pomodoroService?.isRunning()) {
+						await this.pomodoroService.pausePomodoro();
+					} else {
+						await this.pomodoroService?.startPomodoro();
+					}
+				},
+			},
+			{
+				id: "superflow:pause-timer",
+				nameKey: "superflow.pauseTimer",
+				callback: async () => {
+					await this.pomodoroService?.pausePomodoro();
+				},
+			},
+			{
+				id: "superflow:start-break",
+				nameKey: "superflow.startBreak",
+				callback: async () => {
+					await this.pomodoroService?.startBreak();
+				},
+			},
+			{
+				id: "superflow:open-planning",
+				nameKey: "superflow.openPlanning",
+				callback: () => {
+					this.planningService.startPlanning();
+					new PlanningModal(this.app, this, this.planningService).open();
+				},
+			},
+			{
+				id: "superflow:switch-task",
+				nameKey: "superflow.switchTask",
+				callback: async () => {
+					try {
+						const allTasks = await this.cacheManager.getAllTasks();
+						const unarchivedTasks = allTasks.filter((task) => !task.archived);
+						openTaskSelector(this, unarchivedTasks, async (selectedTask) => {
+							if (!selectedTask) return;
+							// Stop any currently active tracking
+							const currentlyTracked = allTasks.find((task) =>
+								!!getActiveTimeEntry(task.timeEntries || [])
+							);
+							if (currentlyTracked) {
+								await this.stopTimeTracking(currentlyTracked);
+							}
+							await this.startTimeTracking(selectedTask);
+						});
+					} catch (error) {
+						console.error("Error in switch-task:", error);
+					}
+				},
+			},
+			{
+				id: "superflow:open-daily-summary",
+				nameKey: "superflow.openDailySummary" as TranslationKey,
+				callback: async () => {
+					await this.activateView(DAILY_SUMMARY_VIEW_TYPE);
+				},
+			},
+			{
+				id: "superflow:open-weekly-summary",
+				nameKey: "superflow.openWeeklySummary" as TranslationKey,
+				callback: async () => {
+					await this.activateView(WEEKLY_SUMMARY_VIEW_TYPE);
 				},
 			},
 		];
@@ -2530,6 +2652,13 @@ export default class TaskNotesPlugin extends Plugin {
 				setTimeout(() => {
 					this.statusBarService.requestUpdate();
 				}, 50);
+			}
+
+			// Auto-start focus session if configured
+			if (this.focusEngine) {
+				this.focusEngine.handleTimeTrackingStarted(task).catch((err) => {
+					console.warn("Failed to auto-start focus on tracking:", err);
+				});
 			}
 
 			return updatedTask;

@@ -418,7 +418,7 @@ Manually review before deleting!
 class MyComponent {
     private translate: (key: TranslationKey, vars?: Record<string, any>) => string;
 
-    constructor(plugin: TaskNotesPlugin) {
+    constructor(plugin: SuperFlowPlugin) {
         this.translate = plugin.i18n.translate.bind(plugin.i18n);
     }
 
@@ -436,13 +436,13 @@ class MyComponent {
 
 ```typescript
 // For settings/functions where plugin is passed as parameter
-function renderSettings(plugin: TaskNotesPlugin) {
+function renderSettings(plugin: SuperFlowPlugin) {
     const translate = (key: TranslationKey) => plugin.i18n.translate(key);
     return translate("settings.general.title");
 }
 
 // For scoped prefixes (reduces repetition)
-function renderCalendarSettings(plugin: TaskNotesPlugin) {
+function renderCalendarSettings(plugin: SuperFlowPlugin) {
     const t = (key: string) =>
         plugin.i18n.translate(`views.calendar.settings.${key}`);
 

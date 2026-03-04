@@ -1,6 +1,6 @@
-# TaskNotes Plugin Utility Classes Documentation
+# SuperFlow Plugin Utility Classes Documentation
 
-This document provides comprehensive documentation for the scoped utility classes available in the ChronoSync/TaskNotes plugin. All utilities are properly scoped under `.tasknotes-plugin` and use the established `--tn-` CSS variable system.
+This document provides comprehensive documentation for the scoped utility classes available in the ChronoSync/SuperFlow plugin. All utilities are properly scoped under `.superflow-plugin` and use the established `--tn-` CSS variable system.
 
 ## Table of Contents
 
@@ -23,7 +23,7 @@ The utility class system provides a comprehensive set of single-purpose CSS clas
 
 ### Key Features
 
-- **Scoped**: All utilities are scoped under `.tasknotes-plugin`
+- **Scoped**: All utilities are scoped under `.superflow-plugin`
 - **Design System Integration**: Uses `--tn-` CSS variables for consistency
 - **Responsive**: Includes responsive variants for mobile-first design
 - **Accessible**: Includes accessibility-focused utilities and reduced motion support
@@ -330,7 +330,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 ```html
 <!-- Good: Component + utilities for layout -->
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-task-card tn-mb-md tn-p-lg">
     <div class="tn-task-card__header tn-flex tn-justify-between tn-items-center">
       <h3 class="tn-task-card__title tn-text-lg tn-font-semibold">Task Title</h3>
@@ -349,7 +349,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Centered Container
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-flex tn-justify-center tn-items-center tn-min-h-full">
     <div class="tn-max-w-md tn-w-full tn-p-lg">
       <!-- Centered content -->
@@ -360,7 +360,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Card Grid
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-grid tn-grid-cols-1 tn-sm-grid-cols-2 tn-lg-grid-cols-3 tn-gap-md">
     <div class="tn-task-card tn-p-md tn-rounded-md tn-shadow">Card 1</div>
     <div class="tn-task-card tn-p-md tn-rounded-md tn-shadow">Card 2</div>
@@ -371,7 +371,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Split Layout
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-flex tn-flex-col tn-lg-flex-row tn-gap-lg">
     <div class="tn-flex-1 tn-bg-primary tn-p-lg tn-rounded-lg">
       <!-- Main content -->
@@ -385,7 +385,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Button Row
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-flex tn-justify-end tn-gap-sm tn-mt-lg">
     <button class="tn-btn tn-btn--secondary tn-px-md tn-py-sm">Cancel</button>
     <button class="tn-btn tn-btn--primary tn-px-md tn-py-sm tn-bg-accent tn-text-white">Save</button>
@@ -397,7 +397,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Mobile-First Stack
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <!-- Stack on mobile, row on tablet+ -->
   <div class="tn-flex tn-flex-col tn-sm-flex-row tn-gap-md">
     <div class="tn-flex-1">Content 1</div>
@@ -408,7 +408,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Hide/Show Elements
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <!-- Show on mobile, hide on desktop -->
   <button class="tn-block tn-lg-hidden">Mobile Menu</button>
   
@@ -421,7 +421,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Loading Button
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <button class="tn-btn tn-loading tn-cursor-not-allowed">
     Saving...
   </button>
@@ -430,7 +430,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Hover Effects
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-task-card tn-transition tn-hover-shadow tn-hover-scale tn-cursor-pointer">
     Hoverable card
   </div>
@@ -439,7 +439,7 @@ Border and focus utilities automatically increase in high contrast mode.
 
 #### Focus States
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <input class="tn-input tn-focus-ring tn-px-md tn-py-sm tn-border tn-rounded" 
          placeholder="Focus me">
 </div>
@@ -474,6 +474,6 @@ Utilities support the same browsers as the Obsidian app:
 
 ## Conclusion
 
-The TaskNotes utility class system provides a powerful foundation for building consistent, maintainable UI components. By combining BEM components with focused utilities, you can create flexible layouts while maintaining the plugin's design system integrity.
+The SuperFlow utility class system provides a powerful foundation for building consistent, maintainable UI components. By combining BEM components with focused utilities, you can create flexible layouts while maintaining the plugin's design system integrity.
 
 For questions or suggestions about the utility system, please refer to the project's documentation or open an issue in the repository.

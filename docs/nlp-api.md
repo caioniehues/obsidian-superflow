@@ -1,4 +1,4 @@
-# TaskNotes NLP API
+# SuperFlow NLP API
 
 The NLP API parses natural-language task text and optionally creates a task.
 
@@ -21,7 +21,7 @@ Notes:
 
 - `text` is required and must be a string.
 - Per-request `locale` is not currently supported.
-- Parser language comes from TaskNotes settings (`nlpLanguage`).
+- Parser language comes from SuperFlow settings (`nlpLanguage`).
 
 ## `POST /api/nlp/parse`
 
@@ -101,7 +101,7 @@ The parser can extract:
 - Time estimates (`2h`, `30min`, `estimate 45m`)
 - Recurrence (`daily`, `weekly`, `every monday`)
 
-Exact parsing behavior depends on your TaskNotes NLP settings and trigger configuration.
+Exact parsing behavior depends on your SuperFlow NLP settings and trigger configuration.
 
 ## Error Responses
 

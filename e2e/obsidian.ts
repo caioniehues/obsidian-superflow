@@ -5,7 +5,7 @@ import { spawn, ChildProcess } from 'child_process';
 
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const UNPACKED_DIR = path.join(PROJECT_ROOT, '.obsidian-unpacked');
-const E2E_VAULT_DIR = path.join(PROJECT_ROOT, 'tasknotes-e2e-vault');
+const E2E_VAULT_DIR = path.join(PROJECT_ROOT, 'superflow-e2e-vault');
 
 export interface ObsidianApp {
   browser?: Browser;

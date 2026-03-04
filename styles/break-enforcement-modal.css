@@ -1,0 +1,21 @@
+/* Break Enforcement Modal — countdown and skip controls */
+.break-enforcement-countdown {
+	font-size: 3rem;
+	font-weight: var(--font-bold);
+	text-align: center;
+	color: var(--interactive-accent);
+	margin: var(--size-4-3, 24px) 0;
+	font-variant-numeric: tabular-nums;
+}
+
+.modal-button-container {
+	display: flex;
+	justify-content: center;
+	gap: var(--size-2-2, 8px);
+	margin-top: var(--size-4-2, 16px);
+}
+
+.modal-button-container button:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}

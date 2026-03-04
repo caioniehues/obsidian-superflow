@@ -1,6 +1,6 @@
 # i18n-state-manager
 
-i18n-state-manager is a translation management tool developed for TaskNotes and published as an open-source npm package. It addresses a limitation common to most translation tools: the inability to detect when translations become outdated after source text changes.
+i18n-state-manager is a translation management tool developed for SuperFlow and published as an open-source npm package. It addresses a limitation common to most translation tools: the inability to detect when translations become outdated after source text changes.
 
 ## Purpose
 
@@ -24,9 +24,9 @@ A translation is considered:
 - **Missing**: No translation exists for the key
 - **Stale**: Source hash has changed since the translation was created
 
-## Integration with TaskNotes
+## Integration with SuperFlow
 
-TaskNotes uses i18n-state-manager to manage translations across seven languages. The tool runs in continuous integration to prevent deployment of incomplete or outdated translations.
+SuperFlow uses i18n-state-manager to manage translations across seven languages. The tool runs in continuous integration to prevent deployment of incomplete or outdated translations.
 
 Available commands:
 
@@ -46,7 +46,7 @@ The tool requires Node.js 16 or later. Commands that scan code (`check-usage`, `
 
 ## Development History
 
-i18n-state-manager was created during TaskNotes development to address translation drift as the codebase evolved. After proving effective for TaskNotes, it was extracted as a standalone tool to benefit other projects facing similar challenges.
+i18n-state-manager was created during SuperFlow development to address translation drift as the codebase evolved. After proving effective for SuperFlow, it was extracted as a standalone tool to benefit other projects facing similar challenges.
 
 ## Installation
 

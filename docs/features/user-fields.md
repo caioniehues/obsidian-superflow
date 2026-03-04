@@ -1,13 +1,13 @@
 
 # User Fields
 
-TaskNotes allows you to define your own custom fields for tasks. This feature allows you to add custom data to your tasks and use it for filtering, sorting, and grouping.
+SuperFlow allows you to define your own custom fields for tasks. This feature allows you to add custom data to your tasks and use it for filtering, sorting, and grouping.
 User fields can store workflow-specific metadata such as owner, effort class, client, or review stage.
 
 
 ## Creating User Fields
 
-User fields are created in the TaskNotes settings, under the "Task Properties" tab. To create a new user field, click the "Add new user field" button.
+User fields are created in the SuperFlow settings, under the "Task Properties" tab. To create a new user field, click the "Add new user field" button.
 Fields that are not used in filters or grouping still add frontmatter overhead, so this section focuses on fields used in views.
 
 Each user field has the following properties:

@@ -634,4 +634,99 @@ export function renderFeaturesTab(
 			}
 		}
 	);
+
+	// SuperFlow Section
+	createSettingGroup(
+		container,
+		{
+			heading: translate("settings.features.superflow.header" as TranslationKey),
+			description: translate("settings.features.superflow.description" as TranslationKey),
+		},
+		(group) => {
+			group.addSetting((setting) =>
+				configureDropdownSetting(setting, {
+					name: translate("settings.features.superflow.defaultFocusMode" as TranslationKey),
+					desc: translate("settings.features.superflow.defaultFocusModeDesc" as TranslationKey),
+					options: [
+						{ value: "pomodoro", label: "Pomodoro" },
+						{ value: "flowtime", label: "Flowtime" },
+						{ value: "countdown", label: "Countdown" },
+					],
+					getValue: () => plugin.settings.defaultFocusMode ?? "pomodoro",
+					setValue: async (value: string) => {
+						plugin.settings.defaultFocusMode = value as "pomodoro" | "flowtime" | "countdown";
+						save();
+					},
+				})
+			);
+
+			group.addSetting((setting) =>
+				configureDropdownSetting(setting, {
+					name: translate("settings.features.superflow.enforceBreaks" as TranslationKey),
+					desc: translate("settings.features.superflow.enforceBreaksDesc" as TranslationKey),
+					options: [
+						{ value: "none", label: "None" },
+						{ value: "soft", label: "Soft (skippable)" },
+						{ value: "strict", label: "Strict (30s delay)" },
+					],
+					getValue: () => plugin.settings.enforceBreaks ?? "none",
+					setValue: async (value: string) => {
+						plugin.settings.enforceBreaks = value as "none" | "soft" | "strict";
+						save();
+					},
+				})
+			);
+
+			group.addSetting((setting) =>
+				configureToggleSetting(setting, {
+					name: translate("settings.features.superflow.autoStartFocusOnTracking" as TranslationKey),
+					desc: translate("settings.features.superflow.autoStartFocusOnTrackingDesc" as TranslationKey),
+					getValue: () => plugin.settings.autoStartFocusOnTracking ?? false,
+					setValue: async (value: boolean) => {
+						plugin.settings.autoStartFocusOnTracking = value;
+						save();
+					},
+				})
+			);
+
+			group.addSetting((setting) =>
+				configureToggleSetting(setting, {
+					name: translate("settings.features.superflow.dailyPlanning" as TranslationKey),
+					desc: translate("settings.features.superflow.dailyPlanningDesc" as TranslationKey),
+					getValue: () => plugin.settings.dailyPlanningOnOpen ?? false,
+					setValue: async (value: boolean) => {
+						plugin.settings.dailyPlanningOnOpen = value;
+						save();
+					},
+				})
+			);
+
+			group.addSetting((setting) =>
+				configureNumberSetting(setting, {
+					name: translate("settings.features.superflow.trackingReminder" as TranslationKey),
+					desc: translate("settings.features.superflow.trackingReminderDesc" as TranslationKey),
+					placeholder: "30",
+					min: 0,
+					max: 120,
+					getValue: () => plugin.settings.trackingReminderMinutes ?? 0,
+					setValue: async (value: number) => {
+						plugin.settings.trackingReminderMinutes = value;
+						save();
+					},
+				})
+			);
+
+			group.addSetting((setting) =>
+				configureToggleSetting(setting, {
+					name: translate("settings.features.superflow.showTotalTimeToday" as TranslationKey),
+					desc: translate("settings.features.superflow.showTotalTimeTodayDesc" as TranslationKey),
+					getValue: () => plugin.settings.showTotalTimeToday ?? false,
+					setValue: async (value: boolean) => {
+						plugin.settings.showTotalTimeToday = value;
+						save();
+					},
+				})
+			);
+		}
+	);
 }

@@ -435,7 +435,40 @@ export const PluginFactory = {
       },
       fieldMapping: SettingsFactory.createFieldMapping(),
       customStatuses: [SettingsFactory.createStatusConfig()],
-      customPriorities: [SettingsFactory.createPriorityConfig()]
+      customPriorities: [SettingsFactory.createPriorityConfig()],
+      // Pomodoro settings (required by featuresTab number inputs)
+      pomodoroWorkDuration: 25,
+      pomodoroShortBreakDuration: 5,
+      pomodoroLongBreakDuration: 15,
+      pomodoroLongBreakInterval: 4,
+      pomodoroAutoStartBreaks: false,
+      pomodoroAutoStartWork: false,
+      pomodoroNotifications: true,
+      pomodoroSoundEnabled: false,
+      pomodoroSoundVolume: 50,
+      pomodoroStorageLocation: 'plugin' as const,
+      pomodoroMobileSidebar: 'tab' as const,
+      // Feature toggles
+      enableTaskLinkOverlay: false,
+      enableInstantTaskConvert: false,
+      enableNaturalLanguageInput: false,
+      nlpDefaultToScheduled: false,
+      nlpLanguage: 'en',
+      useDefaultsOnInstantConvert: false,
+      hideCompletedFromOverdue: false,
+      disableNoteIndexing: false,
+      enableNotifications: false,
+      notificationType: 'in-app' as const,
+      autoStopTimeTrackingOnComplete: false,
+      autoStopTimeTrackingNotification: false,
+      maintainDueDateOffsetInRecurring: false,
+      resetCheckboxesOnRecurrence: false,
+      calendarViewSettings: {
+        enableTimeblocking: false,
+        defaultShowTimeblocks: false,
+        defaultTimeblockColor: '#3b82f6',
+      },
+      suggestionDebounceMs: undefined,
     };
 
     const mockPlugin = {

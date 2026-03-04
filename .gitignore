@@ -65,9 +65,9 @@ C/
 .obsidian-unpacked/
 test-results/
 # E2E vault plugin symlinks (point to build output)
-tasknotes-e2e-vault/.obsidian/plugins/tasknotes/main.js
-tasknotes-e2e-vault/.obsidian/plugins/tasknotes/manifest.json
-tasknotes-e2e-vault/.obsidian/plugins/tasknotes/styles.css
+superflow-e2e-vault/.obsidian/plugins/tasknotes/main.js
+superflow-e2e-vault/.obsidian/plugins/tasknotes/manifest.json
+superflow-e2e-vault/.obsidian/plugins/tasknotes/styles.css
 .augment
 # Test output files
 jest-out.txt
@@ -78,10 +78,14 @@ OBSIDIAN-SERVER-README.md
 obsidian-help
 obsidian-api
 .clump
-tasknotes-e2e-vault/.obsidian/workspace.json
+superflow-e2e-vault/.obsidian/workspace.json
 .obsidian-config-e2e
 # Generated calendar files
-tasknotes-e2e-vault/*.ics
+superflow-e2e-vault/*.ics
 /.ops
 AGENTS.md
 /docs-builder/dist
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db

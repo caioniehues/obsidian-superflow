@@ -1,0 +1,66 @@
+/* Daily Summary View */
+.daily-summary-view {
+	padding: var(--size-4-3, 24px);
+}
+
+.daily-summary-empty {
+	color: var(--text-muted);
+	font-style: italic;
+	text-align: center;
+	padding: var(--size-4-6, 48px) 0;
+}
+
+.daily-summary-overview {
+	display: flex;
+	gap: var(--size-4-2, 16px);
+	margin-bottom: var(--size-4-4, 32px);
+	flex-wrap: wrap;
+}
+
+.daily-summary-stat-card {
+	flex: 1;
+	min-width: 120px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m, 8px);
+	padding: var(--size-4-2, 16px);
+	text-align: center;
+}
+
+.daily-summary-stat-value {
+	font-size: var(--font-ui-large);
+	font-weight: var(--font-bold);
+	color: var(--text-normal);
+	margin-bottom: var(--size-2-1, 4px);
+}
+
+.daily-summary-stat-label {
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+}
+
+.daily-summary-tasks,
+.daily-summary-projects {
+	margin-bottom: var(--size-4-3, 24px);
+}
+
+.daily-summary-tasks table,
+.daily-summary-projects table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--font-ui-small);
+}
+
+.daily-summary-tasks th,
+.daily-summary-projects th {
+	text-align: left;
+	padding: var(--size-2-1, 4px) var(--size-2-2, 8px);
+	color: var(--text-muted);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.daily-summary-tasks td,
+.daily-summary-projects td {
+	padding: var(--size-2-1, 4px) var(--size-2-2, 8px);
+	border-bottom: 1px solid var(--background-modifier-border-focus);
+}

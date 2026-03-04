@@ -8,6 +8,8 @@ import {
 	getRecurrenceDisplayText,
 	filterEmptyProjects,
 	calculateTotalTimeSpent,
+	getActiveTimeEntry,
+	formatTime,
 	sanitizeForCssClass,
 } from "../utils/helpers";
 import { FilterUtils } from "../utils/FilterUtils";
@@ -537,6 +539,7 @@ const PROPERTY_EXTRACTORS: Record<string, (task: TaskInfo) => any> = {
 	dateModified: (task) => task.dateModified,
 	googleCalendarSync: (task) => task.path, // Used to check if task is synced via plugin settings
 	checklistProgress: (task) => task.path, // Used to compute checklist progress from metadata cache listItems
+	timeProgress: (task) => task.timeEstimate, // Used to render time tracking progress bar
 };
 
 /**
@@ -978,6 +981,45 @@ const PROPERTY_RENDERERS: Record<string, PropertyRenderer> = {
 		if (Array.isArray(value) && value.length > 0) {
 			element.textContent = `Linked to ${value.length} calendar ${value.length === 1 ? "event" : "events"}`;
 		}
+	},
+	timeProgress: (element, _value, task) => {
+		const estimate = task.timeEstimate;
+		if (!estimate || estimate <= 0) {
+			return;
+		}
+
+		// Calculate completed time from totalTrackedTime (minutes)
+		let trackedMinutes = task.totalTrackedTime ?? 0;
+
+		// Include active session elapsed time
+		const activeEntry = getActiveTimeEntry(task.timeEntries ?? []);
+		if (activeEntry?.startTime) {
+			const elapsed = Date.now() - new Date(activeEntry.startTime).getTime();
+			trackedMinutes += Math.max(0, Math.round(elapsed / (1000 * 60)));
+		}
+
+		const percent = Math.min(100, Math.round((trackedMinutes / estimate) * 100));
+		const isOvertime = trackedMinutes > estimate;
+
+		const progressEl = element.createEl("span", {
+			cls: `task-card__time-progress${isOvertime ? " task-card__time-progress--overtime" : ""}`,
+		});
+
+		const progressBar = progressEl.createEl("span", { cls: "task-card__time-progress-bar" });
+		const progressFill = progressBar.createEl("span", { cls: "task-card__time-progress-bar-fill" });
+		progressFill.style.width = `${percent}%`;
+		if (percent > 0 && percent < 5) {
+			progressFill.style.minWidth = "2px";
+		}
+
+		progressEl.createEl("span", {
+			cls: "task-card__time-progress-label",
+			text: `${formatTime(trackedMinutes)} / ${formatTime(estimate)}`,
+		});
+
+		setTooltip(progressEl, `${percent}% time used (${formatTime(trackedMinutes)} of ${formatTime(estimate)})`, {
+			placement: "top",
+		});
 	},
 	checklistProgress: (element, _value, task, plugin) => {
 		const progress = getChecklistProgress(task.path, plugin);

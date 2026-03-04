@@ -1,6 +1,6 @@
 # CSS Build System
 
-This directory contains the modular CSS source files for the TaskNotes plugin. The main `styles.css` file is generated from these source files during the build process.
+This directory contains the modular CSS source files for the SuperFlow plugin. The main `styles.css` file is generated from these source files during the build process.
 
 ## File Structure
 

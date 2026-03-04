@@ -1,6 +1,6 @@
 # Property Types Reference
 
-This reference documents the expected data types for each frontmatter property that TaskNotes uses.
+This reference documents the expected data types for each frontmatter property that SuperFlow uses.
 
 
 ## Quick Reference
@@ -34,7 +34,7 @@ Use this table for fast validation when a field is not behaving as expected in v
 
 ## Property Details
 
-The sections below describe storage formats, but there is flexibility in authoring style. TaskNotes normalizes many equivalent YAML representations as long as the resulting data type is correct.
+The sections below describe storage formats, but there is flexibility in authoring style. SuperFlow normalizes many equivalent YAML representations as long as the resulting data type is correct.
 
 ### Text Properties
 
@@ -60,7 +60,7 @@ The sections below describe storage formats, but there is flexibility in authori
 
 ### Date Properties
 
-All date properties are stored as **text strings** in your frontmatter. TaskNotes expects specific formats:
+All date properties are stored as **text strings** in your frontmatter. SuperFlow expects specific formats:
 When in doubt, prefer ISO-style values. They sort correctly as text, travel well through APIs, and are easiest to parse consistently.
 
 #### due
@@ -329,9 +329,9 @@ reminders:
 
 ## Field Mapping
 
-All property names can be customized via **Settings → Task Properties → Field Mapping**. If you change a field mapping, TaskNotes will read and write using your custom property name.
+All property names can be customized via **Settings → Task Properties → Field Mapping**. If you change a field mapping, SuperFlow will read and write using your custom property name.
 
-For example, if you map `due` to `dueDate`, TaskNotes will expect:
+For example, if you map `due` to `dueDate`, SuperFlow will expect:
 
 ```yaml
 dueDate: "2025-01-15"

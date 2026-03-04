@@ -1,11 +1,13 @@
-import { TaskInfo } from "../types";
+import { TaskInfo, STATS_VIEW_TYPE } from "../types";
 import { RequestDeduplicator } from "../utils/RequestDeduplicator";
+import { formatTime } from "../utils/helpers";
 import { setTooltip, TFile } from "obsidian";
 import { openTaskSelector } from "../modals/TaskSelectorWithCreateModal";
 
 export class StatusBarService {
 	private plugin: import("../main").default;
 	private statusBarElement: HTMLElement | null = null;
+	private totalTimeTodayElement: HTMLElement | null = null;
 	private requestDeduplicator: RequestDeduplicator;
 	private updateTimeout: number | null = null;
 
@@ -34,6 +36,79 @@ export class StatusBarService {
 
 		// Initial update
 		this.updateStatusBar();
+
+		// Total time today status bar element
+		if (this.plugin.settings.showTotalTimeToday) {
+			this.initTotalTimeToday();
+		}
+	}
+
+	private initTotalTimeToday(): void {
+		this.totalTimeTodayElement = this.plugin.addStatusBarItem();
+		this.totalTimeTodayElement.addClass("tasknotes-status-bar-total-time");
+		this.totalTimeTodayElement.style.cursor = "pointer";
+		this.totalTimeTodayElement.addEventListener("click", () => {
+			this.openStatsView();
+		});
+		this.updateTotalTimeToday();
+	}
+
+	private async openStatsView(): Promise<void> {
+		const leaves = this.plugin.app.workspace.getLeavesOfType(STATS_VIEW_TYPE);
+		if (leaves.length > 0) {
+			this.plugin.app.workspace.revealLeaf(leaves[0]);
+		} else {
+			const leaf = this.plugin.app.workspace.getLeaf(true);
+			await leaf.setViewState({ type: STATS_VIEW_TYPE, active: true });
+		}
+	}
+
+	private async updateTotalTimeToday(): Promise<void> {
+		if (!this.totalTimeTodayElement) return;
+
+		try {
+			const allTasks = await this.plugin.cacheManager.getAllTasks();
+			const totalMinutes = this.computeTodayMinutes(allTasks);
+			this.renderTotalTimeToday(totalMinutes);
+		} catch (error) {
+			console.error("Error updating total time today:", error);
+		}
+	}
+
+	private computeTodayMinutes(tasks: TaskInfo[]): number {
+		const now = new Date();
+		const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+		const todayEnd = new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
+
+		let total = 0;
+
+		for (const task of tasks) {
+			if (!task.timeEntries || task.timeEntries.length === 0) continue;
+
+			for (const entry of task.timeEntries) {
+				const entryStart = new Date(entry.startTime);
+				if (entryStart < todayStart || entryStart >= todayEnd) continue;
+
+				if (!entry.endTime) {
+					// Active session
+					total += Math.max(0, Math.floor((Date.now() - entryStart.getTime()) / (1000 * 60)));
+				} else {
+					const entryEnd = new Date(entry.endTime);
+					total += Math.max(0, Math.floor((entryEnd.getTime() - entryStart.getTime()) / (1000 * 60)));
+				}
+			}
+		}
+
+		return total;
+	}
+
+	private renderTotalTimeToday(minutes: number): void {
+		if (!this.totalTimeTodayElement) return;
+
+		this.totalTimeTodayElement.empty();
+		this.totalTimeTodayElement.createEl("span", {
+			text: `Today: ${formatTime(minutes)}`,
+		});
 	}
 
 	/**
@@ -176,6 +251,7 @@ export class StatusBarService {
 		// Debounce updates to prevent excessive re-renders
 		this.updateTimeout = window.setTimeout(() => {
 			this.updateStatusBar();
+			this.updateTotalTimeToday();
 		}, 100);
 	}
 
@@ -204,6 +280,20 @@ export class StatusBarService {
 	}
 
 	/**
+	 * Briefly flash the status bar element to draw attention.
+	 * Adds a CSS class that triggers an animation, then removes it.
+	 */
+	flash(): void {
+		if (!this.statusBarElement) return;
+
+		const cls = "tasknotes-status-bar--flash";
+		this.statusBarElement.addClass(cls);
+		window.setTimeout(() => {
+			this.statusBarElement?.removeClass(cls);
+		}, 1500);
+	}
+
+	/**
 	 * Cleanup when service is destroyed
 	 */
 	destroy(): void {
@@ -216,7 +306,8 @@ export class StatusBarService {
 			this.requestDeduplicator.cancelAll();
 		}
 
-		// Status bar element is automatically cleaned up by Obsidian when plugin unloads
+		// Status bar elements are automatically cleaned up by Obsidian when plugin unloads
 		this.statusBarElement = null;
+		this.totalTimeTodayElement = null;
 	}
 }

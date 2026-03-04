@@ -1,48 +1,28 @@
-# <img src="tasknotes-gradient.svg" width="32" height="32" style="vertical-align: middle;"> TaskNotes for Obsidian
+# Obsidian SuperFlow
 
-A task management plugin where each task is a separate Markdown note, and all views are powered by [Obsidian Bases](https://help.obsidian.md/bases).
+A focus-first task management plugin for Obsidian with time tracking, focus modes, daily planning, and a system tray companion app.
 
-<img src="https://github.com/callumalpass/tasknotes/blob/main/media/2025-12-07T15-43-26.png?raw=true" />
+**Fork of [TaskNotes](https://github.com/callumalpass/tasknotes)** — each task is a separate Markdown note, all views powered by [Obsidian Bases](https://help.obsidian.md/bases).
 
-## Overview
+## What SuperFlow Adds
 
-Each task is a Markdown note with YAML frontmatter. Every view is a [Bases](https://help.obsidian.md/bases) query.
+SuperFlow extends TaskNotes with features inspired by [Super Productivity](https://super-productivity.com/):
 
-Bases is Obsidian's core plugin for turning notes into databases—it reads properties from your notes and lets you filter, sort, and group them without writing code. TaskNotes stores tasks as notes with structured frontmatter, then uses Bases to query and display them. The Task List, Kanban, Calendar, and Agenda views are all `.base` files.
+- **Focus Modes** — Pomodoro, Flowtime (work until natural break), or Countdown timer
+- **Daily Planning** — "Review yesterday → Plan today" workflow on vault open
+- **System Tray App** — Rust companion showing progress, task switching, idle detection (Linux/Wayland)
+- **Anti-Procrastination** — Break enforcement, tracking reminders, daily/weekly summaries
 
-This keeps your data portable. Tasks are just Markdown files with YAML, so you can read them with any tool, transform them with scripts, or migrate them elsewhere. There's no plugin-specific database.
+## Quick Start
 
-The frontmatter is extensible—add fields like `energy-level` or `client` and they're immediately available in Bases for filtering and grouping. The `.base` files are plain text too, so you can edit filters and sorting directly or duplicate them to create new views.
+1. Install from Community Plugins (or build from source)
+2. Enable the **Bases** core plugin in Obsidian settings
+3. Create a task: `Ctrl+P` → **SuperFlow: Create new task**
+4. Start a focus session: `Ctrl+P` → **SuperFlow: Start focus session**
 
-![Screenshot of TaskNotes plugin](https://github.com/callumalpass/tasknotes/blob/main/media/175266750_comp.gif)
+## Task Structure
 
-**[Full Documentation](https://tasknotes.dev/)**
-
-## Quick start
-
-Create a task with **TaskNotes: Create new task**. The plugin parses natural language—type "Buy groceries tomorrow #errands" and it extracts the due date and context automatically.
-
-Tasks are stored as Markdown files in your vault. Open them directly, edit the frontmatter, or use the plugin's views to manage them.
-
-Open a view with commands like **TaskNotes: Open tasks view** or **TaskNotes: Open kanban board**. These open the corresponding `.base` files from `TaskNotes/Views/`.
-
-## How it works with Bases
-
-TaskNotes registers as a Bases data source and provides custom view types: `tasknotesTaskList`, `tasknotesKanban`, `tasknotesCalendar`, and `tasknotesMiniCalendar`. The default Agenda file is a preconfigured `tasknotesCalendar` list view (`listWeek`). Your task notes become rows; frontmatter properties become columns.
-
-The default `.base` files include formula properties for computed values:
-
-```yaml
-formulas:
-  daysUntilDue: if(due, ((number(date(due)) - number(today())) / 86400000).floor(), null)
-  isOverdue: due && date(due) < today() && status != "done"
-  urgencyScore: formula.priorityWeight + max(0, 10 - formula.daysUntilDue)
-  efficiencyRatio: (timeTracked / timeEstimate * 100).round()
-```
-
-You can sort by `urgencyScore`, filter to show only `isOverdue` tasks, or add these as columns. Edit the `.base` files directly or use the Bases UI. See [default base templates](./docs/views/default-base-templates.md) for the full list of included formulas.
-
-## Task structure
+Tasks are Markdown files with YAML frontmatter:
 
 ```yaml
 title: "Complete documentation"
@@ -50,80 +30,73 @@ status: "in-progress"
 due: "2024-01-20"
 priority: "high"
 contexts: ["work"]
-projects: ["[[Website Redesign]]"]
 timeEstimate: 120
 timeEntries:
   - startTime: "2024-01-15T10:30:00Z"
     endTime: "2024-01-15T11:15:00Z"
 ```
 
-Recurring tasks use RRULE format with per-instance completion tracking:
+Views (Task List, Kanban, Calendar, Agenda) are `.base` files querying this data.
 
-```yaml
-title: "Weekly meeting"
-recurrence: "FREQ=WEEKLY;BYDAY=MO"
-complete_instances: ["2024-01-08"]
+## Focus Modes
+
+| Mode | Description |
+|------|-------------|
+| **Pomodoro** | 25-min work / 5-min break cycles |
+| **Flowtime** | Work until natural break, rest proportional to work |
+| **Countdown** | Fixed duration, no enforced breaks |
+
+Switch modes via command palette or status bar. Break enforcement modal appears when sessions complete.
+
+## KDE Plasma Integration
+
+The companion plasmoid (`superflow-plasmoid/`) displays your current task and timer in the Plasma panel:
+
+- Current task name and remaining time
+- Visual progress indicator
+- Click to switch tasks or control timer
+
+Install: `cd superflow-plasmoid && ./install.sh`
+
+Requires KDE Plasma 6.0+.
+
+### Alternative: System Tray App
+
+For non-KDE environments, a Rust tray app (`superflow-tray/`) provides similar functionality with GTK3.
+
+## Core Features (from TaskNotes)
+
+- Natural language task creation
+- Time tracking with start/stop per task
+- Recurring tasks with RRULE format
+- Calendar sync (Google, Microsoft, ICS)
+- Dependencies between tasks
+- Custom statuses, priorities, user fields
+- HTTP API for automation
+
+## Documentation
+
+See `docs/` for detailed documentation:
+
+- [Core Concepts](docs/core-concepts.md) — Data model and architecture
+- [Features](docs/features.md) — All capabilities
+- [HTTP API](docs/HTTP_API.md) — REST endpoints
+- [Privacy](docs/privacy.md) — Data handling
+
+## Development
+
+```bash
+npm install
+npm run dev      # Watch mode
+npm run build    # Production build
+npm run test     # Run tests
 ```
-
-All property names are configurable. If you already use `deadline` instead of `due`, remap it in settings.
-
-## Other features
-
-Calendar sync with Google and Microsoft (OAuth) or any ICS feed. Time tracking with start/stop per task, Pomodoro timer, and session history. Recurring tasks with fixed or flexible schedules and per-instance completion tracking. Dependencies between tasks. Natural language parsing for task creation. Custom statuses, priorities, and user-defined fields.
-
-## Integrations
-
-TaskNotes has an optional HTTP API. There's a [browser extension](https://github.com/callumalpass/tasknotes-browser-extension) and a [CLI](https://github.com/callumalpass/tasknotes-cli). Webhooks can notify external services on task changes. See [HTTP API docs](./docs/HTTP_API.md) and [Webhooks docs](./docs/webhooks.md).
-
-## Language support
-
-UI: English, German, Spanish, French, Japanese, Russian, Chinese, Portuguese, Korean.
-
-Natural language parsing: English, German, Spanish, French, Italian, Japanese, Dutch, Portuguese, Russian, Swedish, Ukrainian, Chinese.
-
-## Screenshots
-
-<details>
-<summary>View screenshots</summary>
-
-Screenshots are generated from the Playwright documentation suite (`npm run e2e:docs`).
-
-### Calendar
-
-![Month](media/docs/views-calendar-month.png)
-
-![Week](media/docs/views-calendar-week.png)
-
-![Day](media/docs/views-calendar-day.png)
-
-![Year](media/docs/views-calendar-year.png)
-
-### Task views
-
-![Tasks](media/docs/views-tasks-list.png)
-
-![Kanban](media/docs/views-kanban.png)
-
-![Agenda](media/docs/views-agenda.png)
-
-![Mini Calendar](media/docs/views-mini-calendar.png)
-
-### Features
-
-![Task Modal](media/docs/modal-task-create.png)
-
-![Pomodoro](media/docs/feature-pomodoro-timer.png)
-
-![Stats](media/docs/feature-task-statistics.png)
-
-![Settings](media/docs/ui-settings-panel.png)
-
-</details>
-
-## Credits
-
-Calendar components by [FullCalendar.io](https://fullcalendar.io/).
 
 ## License
 
-MIT—see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE).
+
+## Credits
+
+- Original [TaskNotes](https://github.com/callumalpass/tasknotes) by Callum Alpass
+- Calendar components by [FullCalendar.io](https://fullcalendar.io/)

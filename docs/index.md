@@ -3,50 +3,48 @@ hide:
   - toc
 ---
 
-# TaskNotes Documentation
+# SuperFlow Documentation
 
-TaskNotes is a task and note management plugin for Obsidian that follows the "one note per task" principle. Each task is a Markdown file with structured metadata in YAML frontmatter.
+SuperFlow is a focus-first task management plugin for Obsidian. Each task is a Markdown file with structured metadata in YAML frontmatter.
 
-![Task List view](assets/views-tasks-list.png)
+Built as a fork of [TaskNotes](https://github.com/callumalpass/tasknotes), SuperFlow adds focus modes (Pomodoro, Flowtime, Countdown), daily planning workflows, and KDE Plasma integration.
 
 ## Requirements
 
-TaskNotes requires **Obsidian 1.10.1** or later and depends on the **Bases** core plugin. Before you begin, open Obsidian Settings and confirm Bases is enabled under Core Plugins.
+SuperFlow requires **Obsidian 1.10.1** or later and depends on the **Bases** core plugin. Before you begin, open Obsidian Settings and confirm Bases is enabled under Core Plugins.
 
 ## Getting Started
 
 ### 1. Install and Enable
 
-Install TaskNotes from Community Plugins in Obsidian settings, then enable it. If Bases is still disabled, enable it right away so TaskNotes views can open correctly.
+Install SuperFlow from Community Plugins in Obsidian settings, then enable it. If Bases is still disabled, enable it right away so SuperFlow views can open correctly.
 
 ### 2. Create Your First Task
 
-Press <kbd>Ctrl+P</kbd> (or <kbd>Cmd+P</kbd> on macOS), run **TaskNotes: Create new task**, fill in the modal, and save. If you prefer inline workflows, start with a checkbox like `- [ ] Buy groceries` and convert it using the inline task command.
+Press <kbd>Ctrl+P</kbd> (or <kbd>Cmd+P</kbd> on macOS), run **SuperFlow: Create new task**, fill in the modal, and save. If you prefer inline workflows, start with a checkbox like `- [ ] Buy groceries` and convert it using the inline task command.
 
-![Create task modal](assets/modal-task-create.png)
+### 3. Start a Focus Session
 
-### 3. Open the Task List
+Run **SuperFlow: Start focus session** to begin tracking time on your current task. Choose between Pomodoro (25/5 cycles), Flowtime (natural breaks), or Countdown (fixed duration) modes.
 
-Open your first view from the TaskNotes ribbon icon or by running **TaskNotes: Open tasks view** from the command palette. This opens the default Task List `.base` file inside `TaskNotes/Views`.
+### 4. Open the Task List
 
-### 4. Explore
-
-Use [Core Concepts](core-concepts.md) to understand the data model, [Features](features.md) for workflow capabilities, [Views](views.md) for interface behaviour, and [Settings](settings.md) to tune TaskNotes for your vault.
+Open your first view from the SuperFlow ribbon icon or by running **SuperFlow: Open tasks view** from the command palette. This opens the default Task List `.base` file inside `SuperFlow/Views`.
 
 ## Quick Links
 
 <div class="card-grid">
-  <a class="card" href="https://github.com/callumalpass/tasknotes" target="_blank" rel="noopener noreferrer">
-    <span class="card__title">GitHub Repository</span>
-    <span class="card__desc">Source code, issues, releases, and contribution discussions</span>
+  <a class="card" href="/core-concepts/">
+    <span class="card__title">Core Concepts</span>
+    <span class="card__desc">Data model, task structure, and architecture</span>
   </a>
-  <a class="card" href="/features/task-management/">
-    <span class="card__title">Task Management</span>
-    <span class="card__desc">Status, priority, dates, reminders, and recurring tasks</span>
+  <a class="card" href="/features/">
+    <span class="card__title">Features</span>
+    <span class="card__desc">Focus modes, time tracking, planning, and more</span>
   </a>
-  <a class="card" href="/features/inline-tasks/">
-    <span class="card__title">Inline Tasks</span>
-    <span class="card__desc">Widgets, natural language parsing, and checkbox conversion</span>
+  <a class="card" href="/features/time-management/">
+    <span class="card__title">Time Management</span>
+    <span class="card__desc">Focus modes, Pomodoro timer, and time tracking</span>
   </a>
   <a class="card" href="/features/calendar-integration/">
     <span class="card__title">Calendar Integration</span>
@@ -55,10 +53,6 @@ Use [Core Concepts](core-concepts.md) to understand the data model, [Features](f
   <a class="card" href="/HTTP_API/">
     <span class="card__title">HTTP API</span>
     <span class="card__desc">REST API for automation and external integrations</span>
-  </a>
-  <a class="card" href="/migration-v3-to-v4/">
-    <span class="card__title">Migration Guide</span>
-    <span class="card__desc">Upgrading from TaskNotes v3 to v4</span>
   </a>
   <a class="card" href="/troubleshooting/">
     <span class="card__title">Troubleshooting</span>

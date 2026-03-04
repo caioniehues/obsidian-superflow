@@ -1,10 +1,10 @@
 # Workflows
 
-This page describes practical ways to combine TaskNotes features into repeatable workflows. The goal is to show how recurring tasks, projects, filtering, and scheduling fit together in everyday use.
+This page describes practical ways to combine SuperFlow features into repeatable workflows. The goal is to show how recurring tasks, projects, filtering, and scheduling fit together in everyday use.
 
 ## Habit Tracking with Recurring Tasks
 
-Habit tracking in TaskNotes is built on recurring task notes. You can create a recurring task from natural language (for example, "Exercise daily" or "Gym every Monday and Wednesday") or configure recurrence explicitly in the task modal. The modal recurrence controls support frequency, interval, weekday selection, and end conditions.
+Habit tracking in SuperFlow is built on recurring task notes. You can create a recurring task from natural language (for example, "Exercise daily" or "Gym every Monday and Wednesday") or configure recurrence explicitly in the task modal. The modal recurrence controls support frequency, interval, weekday selection, and end conditions.
 
 Once a task has a recurrence rule, its edit modal shows a recurrence calendar. That calendar is where you mark completion per occurrence. Completion history is stored in `complete_instances`, so a recurring task can remain open while still recording daily/weekly completion behavior.
 
@@ -24,7 +24,7 @@ Use Calendar and Agenda views to review upcoming occurrences, and use recurring-
 
 ## Project-Centered Planning
 
-Projects in TaskNotes can be plain text values or wikilinks to project notes. Wikilinks are usually the better long-term option because they connect task execution to project context, backlinks, and graph navigation.
+Projects in SuperFlow can be plain text values or wikilinks to project notes. Wikilinks are usually the better long-term option because they connect task execution to project context, backlinks, and graph navigation.
 
 ```yaml
 title: "Research competitors"
@@ -56,4 +56,4 @@ If you use timeboxing, drag-select on calendar timeline views and create timeblo
 
 A weekly review usually includes three steps: clean up completed/archived tasks, verify recurring-task completion patterns, and rebalance project filters/views. If calendar integrations are enabled, this is also a good point to refresh subscriptions and confirm sync health.
 
-For teams or complex personal systems, keep project notes as source-of-truth documents and use TaskNotes views as execution dashboards derived from those notes.
+For teams or complex personal systems, keep project notes as source-of-truth documents and use SuperFlow views as execution dashboards derived from those notes.

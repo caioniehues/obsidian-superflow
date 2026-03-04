@@ -1,9 +1,9 @@
 # Recurring Tasks
 
 
-TaskNotes recurring tasks use RFC 5545 RRule strings with `DTSTART` support and dynamic next-occurrence scheduling. The model separates recurrence patterns from the next planned instance.
+SuperFlow recurring tasks use RFC 5545 RRule strings with `DTSTART` support and dynamic next-occurrence scheduling. The model separates recurrence patterns from the next planned instance.
 
-If you are new to recurring tasks in TaskNotes, think of the recurrence rule as the long-term plan and the `scheduled` field as the next concrete commitment. Most day-to-day editing affects `scheduled`, while recurrence editing changes the plan itself.
+If you are new to recurring tasks in SuperFlow, think of the recurrence rule as the long-term plan and the `scheduled` field as the next concrete commitment. Most day-to-day editing affects `scheduled`, while recurrence editing changes the plan itself.
 
 ## Core Concepts
 
@@ -44,7 +44,7 @@ Recurring tasks require:
 
 When a recurring task is completed, `scheduled` advances to the next occurrence. By default, `due` does not change.
 
-Enable `Maintain due date offset in recurring tasks` in **Settings → TaskNotes → Features → Recurring Tasks** to preserve due/scheduled spacing.
+Enable `Maintain due date offset in recurring tasks` in **Settings → SuperFlow → Features → Recurring Tasks** to preserve due/scheduled spacing.
 
 Example:
 
@@ -129,7 +129,7 @@ This means completion history and next-action planning stay synchronized automat
 
 ## Flexible Scheduling
 
-TaskNotes intentionally allows off-pattern scheduling so recurring tasks can absorb real-world disruptions without rewriting the entire recurrence rule.
+SuperFlow intentionally allows off-pattern scheduling so recurring tasks can absorb real-world disruptions without rewriting the entire recurrence rule.
 
 The next occurrence can be:
 

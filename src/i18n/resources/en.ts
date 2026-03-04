@@ -611,6 +611,22 @@ export const en: TranslationTree = {
 				header: "Recurring Tasks",
 				description: "Configure behavior for recurring task management.",
 			},
+			superflow: {
+				header: "SuperFlow",
+				description: "Focus modes, daily planning, and anti-procrastination features.",
+				defaultFocusMode: "Default focus mode",
+				defaultFocusModeDesc: "Choose the focus mode used when starting a new session.",
+				enforceBreaks: "Break enforcement",
+				enforceBreaksDesc: "Whether to show a break modal and how strictly to enforce it.",
+				autoStartFocusOnTracking: "Auto-start focus on tracking",
+				autoStartFocusOnTrackingDesc: "Automatically start a focus session when time tracking begins.",
+				dailyPlanning: "Daily planning on vault open",
+				dailyPlanningDesc: "Show the planning modal on the first vault open each day.",
+				trackingReminder: "Tracking reminder (minutes)",
+				trackingReminderDesc: "Show a nudge when no task is tracked for this many minutes. Set to 0 to disable.",
+				showTotalTimeToday: "Show total time today in status bar",
+				showTotalTimeTodayDesc: "Display today's total tracked time in the status bar.",
+			},
 		},
 		defaults: {
 			header: {
@@ -2165,6 +2181,16 @@ export const en: TranslationTree = {
 		startTimeTrackingWithSelector: "Start time tracking (select task)",
 		editTimeEntries: "Edit time entries (select task)",
 		createOrOpenTask: "Create or open task",
+	},
+	superflow: {
+		toggleTimer: "Toggle focus timer",
+		pauseTimer: "Pause focus timer",
+		startBreak: "Start break",
+		openPlanning: "Open daily planning",
+		switchTask: "Switch active task",
+		openDailySummary: "Open daily summary",
+		openWeeklySummary: "Open weekly summary",
+		comingSoon: "Coming soon",
 	},
 	modals: {
 		deviceCode: {

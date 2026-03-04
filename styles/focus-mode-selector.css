@@ -1,0 +1,35 @@
+/* Focus Mode Selector — BEM component */
+.focus-mode-selector {
+	display: flex;
+	gap: var(--size-2-1, 4px);
+	padding: var(--size-2-2, 8px) 0;
+}
+
+.focus-mode-selector__btn {
+	flex: 1;
+	padding: var(--size-2-2, 8px) var(--size-2-3, 12px);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s, 4px);
+	background: var(--background-secondary);
+	color: var(--text-muted);
+	cursor: pointer;
+	font-size: var(--font-ui-small);
+	text-align: center;
+	transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.focus-mode-selector__btn:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.focus-mode-selector__btn--active {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border-color: var(--interactive-accent);
+}
+
+.focus-mode-selector__btn--disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}

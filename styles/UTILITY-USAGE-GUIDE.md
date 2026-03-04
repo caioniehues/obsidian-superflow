@@ -1,6 +1,6 @@
-# TaskNotes Utility Classes - Practical Usage Guide
+# SuperFlow Utility Classes - Practical Usage Guide
 
-This guide provides practical examples and patterns for using the TaskNotes utility classes effectively in your components and views.
+This guide provides practical examples and patterns for using the SuperFlow utility classes effectively in your components and views.
 
 ## Quick Reference Card
 
@@ -31,7 +31,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 1. Task Card Layout
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <!-- Base component with utility spacing -->
   <div class="tn-task-card tn-mb-md">
     <!-- Header with flex utilities -->
@@ -68,7 +68,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 2. Filter Bar Layout
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-filter-bar tn-bg-secondary tn-p-md tn-rounded-lg tn-border tn-border-normal tn-mb-lg">
     <!-- Main filter row -->
     <div class="tn-flex tn-flex-col tn-sm-flex-row tn-gap-md tn-items-start tn-sm-items-center">
@@ -98,7 +98,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 3. Modal Dialog
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-modal-overlay tn-fixed tn-inset-0 tn-bg-black tn-opacity-50 tn-z-modal">
     <div class="tn-flex tn-justify-center tn-items-center tn-min-h-screen tn-p-md">
       <div class="tn-modal tn-bg-primary tn-rounded-lg tn-shadow-strong tn-w-full tn-max-w-md tn-animate-fade-in">
@@ -145,7 +145,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 1. Calendar Grid
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-calendar tn-bg-primary tn-rounded-lg tn-border tn-border-normal tn-overflow-hidden">
     <!-- Calendar header -->
     <div class="tn-flex tn-justify-between tn-items-center tn-p-md tn-bg-secondary tn-border-b tn-border-normal">
@@ -180,7 +180,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 2. Kanban Board
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-kanban tn-flex tn-gap-lg tn-p-lg tn-overflow-x-auto tn-min-h-screen">
     <!-- Kanban column -->
     <div class="tn-kanban-column tn-flex-shrink-0 tn-w-80 tn-bg-secondary tn-rounded-lg tn-border tn-border-normal">
@@ -212,11 +212,11 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 1. Mobile-First Navigation
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <nav class="tn-bg-secondary tn-border-b tn-border-normal">
     <div class="tn-flex tn-justify-between tn-items-center tn-p-md">
       <!-- Logo/title -->
-      <h1 class="tn-text-xl tn-font-bold tn-text-normal">TaskNotes</h1>
+      <h1 class="tn-text-xl tn-font-bold tn-text-normal">SuperFlow</h1>
       
       <!-- Mobile menu button (hidden on desktop) -->
       <button class="tn-btn tn-btn--icon tn-md-hidden tn-hover-scale tn-transition">☰</button>
@@ -244,7 +244,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 2. Responsive Grid Layout
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-container tn-mx-auto tn-px-md">
     <!-- Responsive grid: 1 col mobile, 2 cols tablet, 3 cols desktop -->
     <div class="tn-grid tn-grid-cols-1 tn-sm-grid-cols-2 tn-lg-grid-cols-3 tn-gap-md tn-gap-lg">
@@ -267,7 +267,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 1. Loading States
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <!-- Loading button -->
   <button class="tn-btn tn-loading tn-px-lg tn-py-sm tn-bg-accent tn-text-white tn-rounded tn-cursor-not-allowed">
     Saving Task...
@@ -289,7 +289,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 2. Error and Success States
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <!-- Error message -->
   <div class="tn-bg-error tn-text-white tn-p-md tn-rounded tn-mb-md tn-flex tn-items-center tn-gap-sm">
     <span class="tn-text-lg">⚠</span>
@@ -313,7 +313,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 3. Interactive States
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <!-- Hover effects -->
   <div class="tn-task-card tn-p-md tn-bg-primary tn-rounded tn-transition tn-hover-shadow tn-hover-scale tn-cursor-pointer">
     Hover me for effects
@@ -335,7 +335,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 1. Card with Actions Menu
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-task-card tn-relative tn-p-md tn-bg-primary tn-rounded tn-border tn-border-normal tn-group">
     <!-- Card content -->
     <div class="tn-pr-8">
@@ -354,7 +354,7 @@ This guide provides practical examples and patterns for using the TaskNotes util
 ### 2. Collapsible Section
 
 ```html
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-bg-secondary tn-rounded-lg tn-border tn-border-normal tn-overflow-hidden">
     <!-- Toggle header -->
     <button class="tn-w-full tn-flex tn-justify-between tn-items-center tn-p-md tn-bg-secondary tn-hover-scale tn-transition">
@@ -430,7 +430,7 @@ If utilities aren't applying, ensure they're properly scoped:
 
 ```html
 <!-- Correct scoping -->
-<div class="tasknotes-plugin">
+<div class="superflow-plugin">
   <div class="tn-flex tn-justify-center">Content</div>
 </div>
 
@@ -443,12 +443,12 @@ Ensure CSS variables are loaded before utilities:
 
 ```css
 /* variables.css must be loaded before utilities.css */
-.tasknotes-plugin {
+.superflow-plugin {
   --tn-spacing-md: 8px;
 }
 
 /* utilities.css can then use these variables */
-.tasknotes-plugin .tn-p-md {
+.superflow-plugin .tn-p-md {
   padding: var(--tn-spacing-md);
 }
 ```
@@ -464,4 +464,4 @@ Remember the mobile-first approach:
 </div>
 ```
 
-This guide should help you effectively use the TaskNotes utility class system in your development work. Remember to balance utility usage with component-based development for the best maintainability and performance.
+This guide should help you effectively use the SuperFlow utility class system in your development work. Remember to balance utility usage with component-based development for the best maintainability and performance.

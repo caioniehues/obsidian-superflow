@@ -1,15 +1,15 @@
-# TaskNotes HTTP API
+# SuperFlow HTTP API
 
-The TaskNotes HTTP API provides local HTTP access to tasks, time tracking, pomodoro, calendars, webhooks, and NLP parsing.
+The SuperFlow HTTP API provides local HTTP access to tasks, time tracking, pomodoro, calendars, webhooks, and NLP parsing.
 
 ## Availability
 
 - Desktop only
 - Disabled by default
-- Started when Obsidian starts and TaskNotes API is enabled
+- Started when Obsidian starts and SuperFlow API is enabled
 - Not available on mobile
 
-Enable it in `Settings -> TaskNotes -> Integrations -> HTTP API`.
+Enable it in `Settings -> SuperFlow -> Integrations -> HTTP API`.
 
 ## Base URL
 
@@ -180,7 +180,7 @@ Get one task by path id.
 - `:id` must be URL-encoded task path.
 
 ```bash
-curl "http://localhost:8080/api/tasks/TaskNotes%2FTasks%2FReview%20docs.md"
+curl "http://localhost:8080/api/tasks/SuperFlow%2FTasks%2FReview%20docs.md"
 ```
 
 ### `PUT /api/tasks/:id`
@@ -188,7 +188,7 @@ curl "http://localhost:8080/api/tasks/TaskNotes%2FTasks%2FReview%20docs.md"
 Update task with partial payload.
 
 ```bash
-curl -X PUT "http://localhost:8080/api/tasks/TaskNotes%2FTasks%2FReview%20docs.md" \
+curl -X PUT "http://localhost:8080/api/tasks/SuperFlow%2FTasks%2FReview%20docs.md" \
   -H "Content-Type: application/json" \
   -d '{"status":"in-progress"}'
 ```

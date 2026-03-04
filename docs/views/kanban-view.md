@@ -8,7 +8,7 @@ Kanban emphasizes state transitions and drag operations over dense list scanning
 
 ## Configuration
 
-Kanban views are stored as `.base` files in `TaskNotes/Views/`. The `groupBy` property determines the column structure—each unique value becomes a column in the board. Open a `.base` file and access the view settings panel to configure options.
+Kanban views are stored as `.base` files in `SuperFlow/Views/`. The `groupBy` property determines the column structure—each unique value becomes a column in the board. Open a `.base` file and access the view settings panel to configure options.
 
 ### Core Settings (Bases)
 
@@ -84,11 +84,11 @@ A typical Kanban view `.base` file includes:
 ```yaml
 ---
 type: query
-source: TaskNotes
-view: TaskNotes Kanban
+source: SuperFlow
+view: SuperFlow Kanban
 views:
-  - name: TaskNotes Kanban
-    type: tasknotesKanban
+  - name: SuperFlow Kanban
+    type: superflowKanban
     groupBy:
       property: task.status
     config:
